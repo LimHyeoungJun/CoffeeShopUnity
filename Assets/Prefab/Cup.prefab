@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4927949961567173198
 Transform:
   m_ObjectHideFlags: 0
@@ -118,6 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264c1101b77d75643a09dc600f4b29d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  espressoPre: {fileID: 8328125320321783064, guid: 66389109f464f174585f9db95bf7dbb6, type: 3}
+  ice_espressoPre: {fileID: 3009396231207125360, guid: f4b9cf76cb5fdf74c8133b8f9f136033, type: 3}
+  americanoPre: {fileID: 7563304412695038191, guid: cbd14e008c0e74b488953eb81b44aea8, type: 3}
+  ice_americanoPre: {fileID: 8316747330573696879, guid: 67abb1dc9927fe04eb9a62837d4145d6, type: 3}
 --- !u!1 &1195924756980177146
 GameObject:
   m_ObjectHideFlags: 0

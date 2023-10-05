@@ -21,15 +21,15 @@ public class MouseClick : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Rotate();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            clickPoint.position = oripos.position;
-        }
-        //Rotate();
+        //if (Input.GetMouseButton(0))
+        //{
+        //    Rotate();
+        //}
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    clickPoint.position = oripos.position;
+        //}
+        Rotate();
 
     }
     private void Rotate()

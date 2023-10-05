@@ -9,33 +9,58 @@ public class Cup : MonoBehaviour
     //Dictionary<List<string>, string> Coffee;
     Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
     List<string> key = new List<string>();
-    private void Start()
+    private bool iscom = false;
+
+    public GameObject espressoPre;
+    public GameObject ice_espressoPre;
+    public GameObject americanoPre;
+    public GameObject ice_americanoPre;
+
+
+    private void Awake()
     {
-        coffees["espresso"] = new List<string> { "coffee" };
-        coffees["ice_espresso"] = new List<string> { "coffee", "ice" };
+        //testcode
+        List<string> list = new List<string>{ "coffee" };
+        list.Sort();
+        coffees["espresso"] = list;
+
+        list = new List<string> { "coffee","ice" };
+        list.Sort();
+        coffees["ice_espresso"] = list;
+
+        list = new List<string> { "coffee", "water" };
+        list.Sort();
+        coffees["americano"] = list;
+
+        list = new List<string> { "coffee", "water", "ice" };
+        list.Sort();
+        coffees["ice_americano"] = list;
+        //
+        iscom = false;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            FindRecipe(coffees, key);
-            var foundRecipes = FindRecipe(coffees, key);
-            foreach (var recipe in foundRecipes)
-            {
-                Debug.Log("Found Recipe: " + recipe);
-            }
-            //foreach (var k in key)
-            //{
-            //    Debug.Log(k);
-            //}
-            //Debug.Log(key.Count);
-        }
-    }
+        //if (Input.GetKeyDown(KeyCode.F) && !iscom)
+        //{
+        //    key.Sort();
+        //    //var foundRecipes = FindRecipe(coffees, key);
+        //    //foreach (var recipe in foundRecipes)
+        //    //{
+        //    //    Debug.Log("Found Recipe: " + recipe);
+        //    //}
 
+        //    //var foundRecipe = FindRecipes(coffees, key);
+        //    //Debug.Log("Found Recipe: " + foundRecipe);
+        //    iscom = true;
+        //}
+        //if (iscom)
+        //{
+           
+        //}
+    }
     private void OnTriggerEnter(Collider other)
     {
-        //key.Add(other.gameObject.tag.ToString());
         if (other.CompareTag("mouse"))
             return;
            
@@ -59,6 +84,58 @@ public class Cup : MonoBehaviour
         }
 
         return keys;
+    }
+    static string FindRecipes(Dictionary<string, List<string>> dictionary, List<string> value)
+    {
+        string key = null;
+
+        foreach (var pair in dictionary)
+        {
+            if (pair.Value.SequenceEqual(value))
+            {
+               key = pair.Key;
+            }
+        }
+
+
+        return key;
+    }
+
+    public void ComplitRecipe()
+    {
+        key.Sort();
+        switch (FindRecipes(coffees, key))
+        {
+            case "espresso":
+                Debug.Log("espresso");
+                var es = Instantiate(espressoPre, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
+                iscom = false;
+                break;
+            case "ice_espresso":
+                Debug.Log("ice_espresso");
+                var icees = Instantiate(ice_espressoPre, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
+                iscom = false;
+                break;
+            case "americano":
+                Debug.Log("americano");
+                var am = Instantiate(americanoPre, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
+                iscom = false;
+                break;
+            case "ice_americano":
+                Debug.Log("ice_americano");
+                var iceam = Instantiate(ice_americanoPre, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
+                iscom = false;
+                break;
+            default:
+                Debug.Log("false");
+                gameObject.SetActive(false);
+                iscom = false;
+                break;
+        }
     }
 
 }

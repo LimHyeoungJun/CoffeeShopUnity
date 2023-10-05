@@ -34,9 +34,11 @@ public class SpawnCup : MonoBehaviour
 
             Cups.Add(Cup);
         }
+    }
 
-        
-       
+    public void SpawnCoffee(string coffee)
+    {
+
     }
 
 }

@@ -8,6 +8,7 @@ public class CamMoveButton : MonoBehaviour
     public Button Cooking;
     public Button Odering;
     public CameraMove mainCam;
+    public Cup cup;
 
 
     public void OnClickCook()
@@ -20,5 +21,12 @@ public class CamMoveButton : MonoBehaviour
     {
         mainCam.CamMove1();
         UIManager.instance.button2On();
+    }
+    public void onClickComplit()
+    {
+        if(cup != null)
+        {
+            cup.ComplitRecipe();
+        }
     }
 }

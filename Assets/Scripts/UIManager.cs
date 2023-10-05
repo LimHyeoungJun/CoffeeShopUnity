@@ -18,18 +18,21 @@ public class UIManager : MonoBehaviour
 
     private static UIManager m_instance;
 
-    public GameObject button1;
-    public GameObject button2;
+    public GameObject mainbutton;
+    public GameObject firstscreenButton;
+    public GameObject complitButton;
 
     public void button1On()
     {
-        button1.SetActive(true);
-        button2.SetActive(false);
+        mainbutton.SetActive(true);
+        firstscreenButton.SetActive(false);
+        complitButton.SetActive(true);
     }
     public void button2On()
     {
-        button1.SetActive(false);
-        button2.SetActive(true);
+        mainbutton.SetActive(false);
+        firstscreenButton.SetActive(true);
+        complitButton.SetActive(false);
     }
 
 }
