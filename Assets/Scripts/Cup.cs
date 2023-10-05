@@ -6,58 +6,46 @@ using UnityEngine;
 
 public class Cup : MonoBehaviour
 {
-    //Dictionary<List<string>, string> Coffee;
+   
     Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
     List<string> key = new List<string>();
     private bool iscom = false;
 
-    public GameObject espressoPre;
-    public GameObject ice_espressoPre;
-    public GameObject americanoPre;
-    public GameObject ice_americanoPre;
-
-
     private void Awake()
     {
-        //testcode
-        List<string> list = new List<string>{ "coffee" };
-        list.Sort();
-        coffees["espresso"] = list;
-
-        list = new List<string> { "coffee","ice" };
-        list.Sort();
-        coffees["ice_espresso"] = list;
-
-        list = new List<string> { "coffee", "water" };
-        list.Sort();
-        coffees["americano"] = list;
-
-        list = new List<string> { "coffee", "water", "ice" };
-        list.Sort();
-        coffees["ice_americano"] = list;
-        //
+        LoadCoffeeData();
         iscom = false;
+        gameObject.SetActive(true);
+    }
+    private void LoadCoffeeData()
+    {
+        StringTable stringTable = new StringTable();
+        foreach (var pair in stringTable.dic)
+        {
+            List<string> ingredients = new List<string>();
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist1)) ingredients.Add(pair.Value.ingredientlist1);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist2)) ingredients.Add(pair.Value.ingredientlist2);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist3)) ingredients.Add(pair.Value.ingredientlist3);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist4)) ingredients.Add(pair.Value.ingredientlist4);
+
+            ingredients.Sort();
+            coffees[pair.Value.name] = ingredients;
+        }
     }
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.F) && !iscom)
-        //{
-        //    key.Sort();
-        //    //var foundRecipes = FindRecipe(coffees, key);
-        //    //foreach (var recipe in foundRecipes)
-        //    //{
-        //    //    Debug.Log("Found Recipe: " + recipe);
-        //    //}
-
-        //    //var foundRecipe = FindRecipes(coffees, key);
-        //    //Debug.Log("Found Recipe: " + foundRecipe);
-        //    iscom = true;
-        //}
-        //if (iscom)
-        //{
+        if (GameManager.instance.isCom)
+        {
+            key.Sort();
            
-        //}
+            GameManager.instance.Coffee = FindRecipes(coffees, key);
+            GameManager.instance.SpawnCup();
+            GameManager.instance.isCom = false;
+
+            iscom = true;
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -94,48 +82,12 @@ public class Cup : MonoBehaviour
             if (pair.Value.SequenceEqual(value))
             {
                key = pair.Key;
+                
             }
         }
-
 
         return key;
     }
 
-    public void ComplitRecipe()
-    {
-        key.Sort();
-        switch (FindRecipes(coffees, key))
-        {
-            case "espresso":
-                Debug.Log("espresso");
-                var es = Instantiate(espressoPre, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                iscom = false;
-                break;
-            case "ice_espresso":
-                Debug.Log("ice_espresso");
-                var icees = Instantiate(ice_espressoPre, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                iscom = false;
-                break;
-            case "americano":
-                Debug.Log("americano");
-                var am = Instantiate(americanoPre, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                iscom = false;
-                break;
-            case "ice_americano":
-                Debug.Log("ice_americano");
-                var iceam = Instantiate(ice_americanoPre, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                iscom = false;
-                break;
-            default:
-                Debug.Log("false");
-                gameObject.SetActive(false);
-                iscom = false;
-                break;
-        }
-    }
-
+    
 }

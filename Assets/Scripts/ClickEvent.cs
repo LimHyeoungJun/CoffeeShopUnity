@@ -19,25 +19,30 @@ public class ClickEvent : MonoBehaviour
     {
         if (check || !Input.GetMouseButton(0))
             return;
-
+        
         if (other.CompareTag("CoffeeMachine"))
         {
             other.GetComponent<CoffeBan>().Click();
             check = true;
         }
-        else if (other.CompareTag("CupSpawn"))
+        if (other.CompareTag("CupSpawn"))
         {
             other.GetComponent<SpawnCup>().click();
             check = true;
         }
-        else if (other.CompareTag("IceBox"))
+        if (other.CompareTag("IceBox"))
         {
             other.GetComponent<IceBox>().Click();
             check = true;
         }
-        else if (other.CompareTag("Bottle"))
+        if (other.CompareTag("Bottle"))
         {
             other.GetComponent<Bottle>().Click();
+            check = true;
+        }
+        if(other.CompareTag("milkbottle"))
+        {
+            other.GetComponent<milkBottle>().Click();
             check = true;
         }
         

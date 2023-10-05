@@ -8,8 +8,6 @@ public class CamMoveButton : MonoBehaviour
     public Button Cooking;
     public Button Odering;
     public CameraMove mainCam;
-    public Cup cup;
-
 
     public void OnClickCook()
     {
@@ -24,9 +22,6 @@ public class CamMoveButton : MonoBehaviour
     }
     public void onClickComplit()
     {
-        if(cup != null)
-        {
-            cup.ComplitRecipe();
-        }
+        GameManager.instance.isCom = true;
     }
 }
