@@ -16,6 +16,10 @@ TagManager:
   - mouse
   - milkbottle
   - milk
+  - espresso
+  - ice_espresso
+  - americano
+  - ice_americano
   layers:
   - Default
   - TransparentFX

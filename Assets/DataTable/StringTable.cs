@@ -23,7 +23,8 @@ public class StringTable : DataTable
 
     public StringTable()//»ý¼ºÀÚ
     {
-        path = "Tables/ptype_getoffwork_recipes_table";
+        //path = "Tables/ptype_getoffwork_recipes_table";
+        path = "Tables/DAY60_ptype_getoffwork_recipes_table";
         Load();
     }
 

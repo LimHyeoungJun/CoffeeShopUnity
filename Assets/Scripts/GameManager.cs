@@ -18,14 +18,17 @@ public class GameManager : MonoBehaviour
 
     private static GameManager m_instance;
 
-    public bool isCom = false;
-    public bool IsCom { get; set; }
+    public bool IsComplet { get; set; }
+    
     public string Coffee { get; set; }
+    public string MadeInMeDrink {  get; set; }
+    public bool IsGiveDrink {  get; set; }  
 
     public SpawnCup cup;
 
     public void SpawnCup() 
     {
         cup.SpawnCoffee(Coffee);
+        Debug.Log(Coffee);
     }
 }

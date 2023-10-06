@@ -12,7 +12,7 @@ day,name,,ingredientlist1,ingredientlist2,ingredientlist3,ingredientlist4
 4,hazelnut_americano,,coffee,water,h_syrup,
 4,ice_hazelnut_americano,,coffee,water,h_syrup,ice
 4,vanilla_latte,,coffee,milk,v_syrup,
-4,ice_vanila_latte,,coffee,milk,v_syrup,ice
+4,ice_vanilla_latte,,coffee,milk,v_syrup,ice
 6,milk_choco,,chocolate,milk,,
 6,ice_milk_chocho,,chocolate,milk,ice,
 7,choco_latte,,chocolate,milk,coffee,
@@ -34,7 +34,7 @@ day,name,,ingredientlist1,ingredientlist2,ingredientlist3,ingredientlist4
 19,honey_banana_shake,,banana,milk,icecream,honey
 21,apple_ade,,apple,soda,,
 21,ice_apple_ade,,apple,soda,ice,
-22,caramel macchiato,,coffee,milk,syrup,ice
+22,caramel_macchiato,,coffee,milk,syrup,ice
 23,lemon_ade,,lemon,soda,,
 23,ice_lemon_ade,,lemon,soda,ice,
 24,lemon_creamsour,,lemon,soda,icecream,
@@ -55,3 +55,27 @@ day,name,,ingredientlist1,ingredientlist2,ingredientlist3,ingredientlist4
 38,orange_ade,,orange,soda,,
 38,ice_orange_ade,,orange,soda,ice,
 39,summer_juice,,orange,lemon,water,ice
+41,pineapple_juice,,pineapple,water,honey,
+42,ice_pineapple_juice,,pineapple,water,honey,ice
+43,cherry_pine_sour,,cherry,pineapple,soda,icecream
+44,morning_fruits,,banana,apple,orange,pineapple
+44,cherry_blossom,,cherry,milk,icecream,syrup
+46,grape_juice,,grape,water,honey,
+46,ice_grape_juice,,grape,water,honey,ice
+47,grape_strawberry_juice,,grape,strawberry,water,honey
+48,grape_ade,,grape,soda,,
+48,ice_grape_ade,,grape,soda,ice,
+49,grape_frappe,,grape,water,icecream,ice
+51,lemon_frappe,,lemon,water,icecream,ice
+52,strawberry_frappe,,strawberry,water,icecream,ice
+52,cherry_frappe,,cherry,water,icecream,ice
+52,orange_frappe,,orange,water,icecream,ice
+53,honey_milk_latte,,coffee,milk,honey,
+54,orange_soda,,orange,icecream,soda,ice
+54,apple_soda,,apple,icecream,soda,ice
+56,cherry_berry_ade,,cherry,strawberry,soda,
+56,ice_cherry_berry_ade,,cherry,strawberry,soda,ice
+57,choco_vanilla_latte,,chocolate,milk,v_syrup,coffee
+58,lemon_tea,,lemon,water,honey,
+58,apple_tea,,apple,water,honey,
+59,sour_paradise,,lemon,orange,cherry,soda

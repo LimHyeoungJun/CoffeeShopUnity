@@ -9,13 +9,12 @@ public class Cup : MonoBehaviour
    
     Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
     List<string> key = new List<string>();
-    private bool iscom = false;
 
     private void Awake()
     {
         LoadCoffeeData();
-        iscom = false;
         gameObject.SetActive(true);
+        GameManager.instance.IsComplet = false;
     }
     private void LoadCoffeeData()
     {
@@ -35,15 +34,12 @@ public class Cup : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isCom)
+        if (GameManager.instance.IsComplet)
         {
             key.Sort();
-           
             GameManager.instance.Coffee = FindRecipes(coffees, key);
             GameManager.instance.SpawnCup();
-            GameManager.instance.isCom = false;
-
-            iscom = true;
+            GameManager.instance.IsComplet = false;
         }
         
     }
@@ -56,6 +52,7 @@ public class Cup : MonoBehaviour
         if (!key.Contains(objectTag))
         {
             key.Add(objectTag);
+            Debug.Log(objectTag);
         }
     }
 
@@ -82,7 +79,6 @@ public class Cup : MonoBehaviour
             if (pair.Value.SequenceEqual(value))
             {
                key = pair.Key;
-                
             }
         }
 

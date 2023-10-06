@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public GameObject mainbutton;
     public GameObject firstscreenButton;
     public GameObject complitButton;
+    public UnityEngine.UI.Text tx;
+    public GameObject TextUI;
 
     public void button1On()
     {
@@ -33,6 +35,24 @@ public class UIManager : MonoBehaviour
         mainbutton.SetActive(false);
         firstscreenButton.SetActive(true);
         complitButton.SetActive(false);
+    }
+
+    public void StartTexting(string text)
+    {
+        TextUI.SetActive(true);
+        StartCoroutine(Typing(text));
+    }
+
+    IEnumerator Typing(string text)
+    {
+        for (int i = 0; i < text.Length; i++) 
+        {
+            tx.text = text.Substring(0,i);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(3f);
+        tx.text = null;
+        TextUI.SetActive(false);
     }
 
 }

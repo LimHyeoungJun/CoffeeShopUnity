@@ -22,6 +22,6 @@ public class CamMoveButton : MonoBehaviour
     }
     public void onClickComplit()
     {
-        GameManager.instance.isCom = true;
+        GameManager.instance.IsComplet = true;
     }
 }
