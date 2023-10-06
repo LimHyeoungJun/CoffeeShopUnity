@@ -7,6 +7,7 @@ public class LivingEntity : MonoBehaviour
 {
     public bool isCompletOrder { get; set; }
     public event Action oderComplet;
+    public event Action oderFalde;
 
     protected virtual void OnEnable()
     {
@@ -20,8 +21,17 @@ public class LivingEntity : MonoBehaviour
             oderComplet();
         }
 
-        // 사망 상태를 참으로 변경
         isCompletOrder = true;
+    }
+    public virtual void OnFlase()
+    {
+        if (oderFalde != null)
+        {
+            oderFalde();
+        }
+
+        isCompletOrder = true;
+
     }
 
 }

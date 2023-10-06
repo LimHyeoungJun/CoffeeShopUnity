@@ -10,6 +10,7 @@ public class NPCSpawn : MonoBehaviour
 
     public float minSpawnTime = 1f;
     public float maxSpawnTime = 5f;
+    private float SpawnTime = 1f;
     public string menu = null;
     private float timer = 0;
 
@@ -26,10 +27,11 @@ public class NPCSpawn : MonoBehaviour
 
     public void Update()
     {
-        timer += Time.deltaTime;
+        
         if(spawnList.Count < 1)
         {
-            if(timer > Random.Range(minSpawnTime, maxSpawnTime))
+            timer += Time.deltaTime;
+            if (timer > SpawnTime)
             {
                 int index = Random.Range(0, menus.Length);
                 menu = menus[index];
@@ -41,7 +43,13 @@ public class NPCSpawn : MonoBehaviour
                     spawnList.Remove(npc);
                     Destroy(npc.gameObject, 1f);
                 };
+                npc.oderFalde += () =>
+                {
+                    spawnList.Remove(npc);
+                    Destroy(npc.gameObject, 3f);
+                };
                 timer = 0f;
+                SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
             }
         }
     }

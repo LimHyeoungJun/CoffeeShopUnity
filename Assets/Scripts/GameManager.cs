@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public string Coffee { get; set; }
     public string MadeInMeDrink {  get; set; }
     public bool IsGiveDrink {  get; set; }  
+    public int PlayerMoney {  get; set; }
+    public int StarPoint {  get; set; }
 
     public SpawnCup cup;
 

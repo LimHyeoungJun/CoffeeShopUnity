@@ -12,6 +12,7 @@ public class NPC : LivingEntity
     public float speed = 5f;
     private string description = null;
     private string NPCOder = null;
+    private float timer;
 
     //TestCode
     private Dictionary<string,string> oder = new Dictionary<string,string>();
@@ -37,6 +38,23 @@ public class NPC : LivingEntity
             string drink = GameManager.instance.Coffee;
             CheckDrink(drink);
         }
+        timer += Time.deltaTime;
+        if(timer > 30f)
+        {
+            if (GameManager.instance.StarPoint == null || GameManager.instance.StarPoint <= 0)
+            {
+                GameManager.instance.StarPoint = 0;
+                Debug.Log(GameManager.instance.StarPoint);
+            }
+            else
+            {
+                GameManager.instance.StarPoint -= 1;
+                Debug.Log(GameManager.instance.StarPoint);
+            }
+            Debug.Log("손님 삐져서 나감");
+            OnFlase();
+            StartCoroutine(TestCode());
+        }
 
     }
     private void CheckDrink(string drink)
@@ -48,10 +66,41 @@ public class NPC : LivingEntity
             OnComplet();
 
             //주문받음 음료가 제대로 나오면 할 행동
-
-
+            if(GameManager.instance.StarPoint == null)
+            {
+                GameManager.instance.StarPoint = 0;
+            }
+            GameManager.instance.StarPoint += 1;
+            Debug.Log(GameManager.instance.StarPoint);
             /////////////////////////
             GameManager.instance.IsGiveDrink = false;
+        }
+        else
+        {
+            //if (GameManager.instance.StarPoint == null || GameManager.instance.StarPoint <= 0)
+            //{
+            //    GameManager.instance.StarPoint = 0;
+            //    Debug.Log(GameManager.instance.StarPoint);
+            //}
+            //else
+            //{
+                
+                
+            //    Debug.Log(GameManager.instance.StarPoint);
+            //}
+
+            GameManager.instance.StarPoint -= 1;
+            Debug.Log("EZ");
+            OnFlase();
+            StartCoroutine(TestCode());
+        }
+    }
+    IEnumerator TestCode()
+    {
+        while (true) 
+        {
+            gameObject.transform.position += new Vector3(0,0.1f,0);
+            yield return null;
         }
     }
     public void Setup(string menu, GameObject start,GameObject end)
@@ -74,7 +123,10 @@ public class NPC : LivingEntity
     {
         base.OnComplet();
     }
-
+    public override void OnFlase()
+    {
+        base.OnFlase();
+    }
     IEnumerator MoveToEndPoint()
     {
         Vector3 startPos = transform.position;
