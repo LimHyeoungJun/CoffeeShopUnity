@@ -10,11 +10,19 @@ public class Cup : MonoBehaviour
     Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
     List<string> key = new List<string>();
 
+    Dictionary<string, int> price = new Dictionary<string, int>();
+
+
     private void Awake()
     {
         LoadCoffeeData();
         gameObject.SetActive(true);
         GameManager.instance.IsComplet = false;
+        //TESTCODE
+        price["water"] = 0;
+        price["coffee"] = 300;
+        price["ice"] = 350;
+        //////////
     }
     private void LoadCoffeeData()
     {
@@ -53,18 +61,21 @@ public class Cup : MonoBehaviour
         {
             key.Add(objectTag);
             Debug.Log(objectTag);
+            int pr = FindPrice(price, objectTag);
+            GameManager.instance.PlayerMoney -= pr;
+            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
         }
     }
 
-    static List<string> FindRecipe(Dictionary<string, List<string>> dictionary, List<string> value)
+    static int FindPrice(Dictionary<string, int> price , string menu)
     {
-        List<string> keys = new List<string>();
+       int keys = new int();
 
-        foreach (var pair in dictionary)
+        foreach (var pair in price)
         {
-            if (pair.Value.SequenceEqual(value))
+            if (pair.Key.SequenceEqual(menu))
             {
-                keys.Add(pair.Key);
+                keys = pair.Value;
             }
         }
 
@@ -84,6 +95,8 @@ public class Cup : MonoBehaviour
 
         return key;
     }
+
+    
 
     
 }

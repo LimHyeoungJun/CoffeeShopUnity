@@ -19,6 +19,7 @@ public class CamMoveButton : MonoBehaviour
     {
         mainCam.CamMove1();
         UIManager.instance.button2On();
+        GameManager.instance.OnCupCollider = true;
     }
     public void onClickComplit()
     {

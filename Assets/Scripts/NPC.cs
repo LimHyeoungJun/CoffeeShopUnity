@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+public class Data
+{
+    public string str;
+    public int price;
+
+    public Data(string str, int price)  // 생성자 추가
+    {
+        this.str = str;
+        this.price = price;
+    }
+}
+
 public class NPC : LivingEntity
 {
     private string menu;
@@ -10,25 +22,28 @@ public class NPC : LivingEntity
     public GameObject endPoint;
 
     public float speed = 5f;
-    private string description = null;
+    private List<Data> description = null;
     private string NPCOder = null;
-    private float timer;
+    private float timer = 30f;
 
     //TestCode
-    private Dictionary<string,string> oder = new Dictionary<string,string>();
+    private Dictionary<string,List<Data>> oder = new Dictionary<string, List<Data>>();
 
     private void Awake()
     {
-        oder["espresso"] = "원액 ";
-        oder["ice_espresso"] = "차가운 원액 ";
-        oder["americano"] = "커피에 물탄거 ";
-        oder["ice_americano"] = "커피에 얼음물 탄거 ";
+        oder["espresso"] = new List<Data>() { new Data("원액 ", 1500) };
+        oder["ice_espresso"] = new List<Data>() { new Data("차가운 원액 ", 1500) };
+        oder["americano"] = new List<Data>() { new Data("커피에 물탄거 ", 1500) };
+        oder["ice_americano"] = new List<Data>() { new Data("커피에 얼음물 탄거 ", 2000) };
+        DayContorller.instance.guestCount += 1;
+        Debug.Log(DayContorller.instance.guestCount);
     }
 
     private void Start()
     {
         StartCoroutine(MoveToEndPoint());
         GameManager.instance.IsGiveDrink = false;
+        UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
     }
     private void Update()
     {
@@ -38,19 +53,10 @@ public class NPC : LivingEntity
             string drink = GameManager.instance.Coffee;
             CheckDrink(drink);
         }
-        timer += Time.deltaTime;
-        if(timer > 30f)
+        timer -= Time.deltaTime;
+        UIManager.instance.TimerUpdate(timer);
+        if(timer < 0)
         {
-            if (GameManager.instance.StarPoint == null || GameManager.instance.StarPoint <= 0)
-            {
-                GameManager.instance.StarPoint = 0;
-                Debug.Log(GameManager.instance.StarPoint);
-            }
-            else
-            {
-                GameManager.instance.StarPoint -= 1;
-                Debug.Log(GameManager.instance.StarPoint);
-            }
             Debug.Log("손님 삐져서 나감");
             OnFlase();
             StartCoroutine(TestCode());
@@ -66,30 +72,17 @@ public class NPC : LivingEntity
             OnComplet();
 
             //주문받음 음료가 제대로 나오면 할 행동
-            if(GameManager.instance.StarPoint == null)
-            {
-                GameManager.instance.StarPoint = 0;
-            }
-            GameManager.instance.StarPoint += 1;
-            Debug.Log(GameManager.instance.StarPoint);
+
+            int mon = GameManager.instance.PlayerMoney += description[description.Count - 1].price;
+            UIManager.instance.MoneyUpdate(mon);
+            
+           
             /////////////////////////
             GameManager.instance.IsGiveDrink = false;
         }
         else
         {
-            //if (GameManager.instance.StarPoint == null || GameManager.instance.StarPoint <= 0)
-            //{
-            //    GameManager.instance.StarPoint = 0;
-            //    Debug.Log(GameManager.instance.StarPoint);
-            //}
-            //else
-            //{
-                
-                
-            //    Debug.Log(GameManager.instance.StarPoint);
-            //}
-
-            GameManager.instance.StarPoint -= 1;
+          
             Debug.Log("EZ");
             OnFlase();
             StartCoroutine(TestCode());
@@ -147,6 +140,6 @@ public class NPC : LivingEntity
         }
 
         Debug.Log("도착했습니다.");
-        SetDialogue(description);
+        SetDialogue(description[0].str);
     }
 }

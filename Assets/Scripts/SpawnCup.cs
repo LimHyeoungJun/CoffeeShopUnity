@@ -59,7 +59,8 @@ public class SpawnCup : MonoBehaviour
                 StringTable.Data data = table.GetString("espresso");
                 if (data != null)
                 {
-                    string dayForEspresso = data.day;
+                    string dayForEspresso = data.day;//몇일에 오픈되는 메뉴인지 표기
+
                     Debug.Log(dayForEspresso);
                 }
                 //////////////////////////

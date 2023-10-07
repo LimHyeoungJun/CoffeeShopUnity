@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class NPCSpawn : MonoBehaviour
 {
@@ -50,6 +49,10 @@ public class NPCSpawn : MonoBehaviour
                 };
                 timer = 0f;
                 SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                if(DayContorller.instance.guestCount > 5)
+                {
+                    Destroy(npc);
+                }
             }
         }
     }

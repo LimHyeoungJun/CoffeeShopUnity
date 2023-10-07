@@ -13,12 +13,13 @@ public class dirnks : MonoBehaviour
         co = GetComponent<Collider>();
         co.enabled = false;
         drinkTag = gameObject.tag;
+        GameManager.instance.OnCupCollider = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(true)
+        if(GameManager.instance.OnCupCollider)
         {
             co.enabled = true;
         }
