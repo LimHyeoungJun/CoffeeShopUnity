@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         if (canRestart && Input.GetMouseButtonDown(0)) 
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬을 다시 로드
+            obj.SetActive(false);
         }
     }
 
@@ -102,8 +103,9 @@ public class UIManager : MonoBehaviour
             fadeImage.color = new Color(255, 255, 255, i);
             yield return null;
         }
+        canRestart = true;
 
-       
+
     }
 
   

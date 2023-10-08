@@ -23,7 +23,7 @@ public class DayContorller : MonoBehaviour
 
     void Update()
     {
-        if(guestCount > 5) 
+        if(guestCount > 4) 
         {
             //여기 페이드인아웃UI
             UIManager.instance.Ending();

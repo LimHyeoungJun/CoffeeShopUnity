@@ -35,8 +35,7 @@ public class NPC : LivingEntity
         oder["ice_espresso"] = new List<Data>() { new Data("차가운 원액 ", 1500) };
         oder["americano"] = new List<Data>() { new Data("커피에 물탄거 ", 1500) };
         oder["ice_americano"] = new List<Data>() { new Data("커피에 얼음물 탄거 ", 2000) };
-        DayContorller.instance.guestCount += 1;
-        Debug.Log(DayContorller.instance.guestCount);
+       
     }
 
     private void Start()
@@ -72,6 +71,8 @@ public class NPC : LivingEntity
             OnComplet();
 
             //주문받음 음료가 제대로 나오면 할 행동
+            DayContorller.instance.guestCount += 1;
+            Debug.Log(DayContorller.instance.guestCount);
 
             int mon = GameManager.instance.PlayerMoney += description[description.Count - 1].price;
             UIManager.instance.MoneyUpdate(mon);
