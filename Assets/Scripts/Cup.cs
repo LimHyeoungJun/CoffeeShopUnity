@@ -16,13 +16,23 @@ public class Cup : MonoBehaviour
     private void Awake()
     {
         LoadCoffeeData();
+        LoadCostprice();
+
         gameObject.SetActive(true);
         GameManager.instance.IsComplet = false;
-        //TESTCODE
-        price["water"] = 0;
-        price["coffee"] = 300;
-        price["ice"] = 350;
-        //////////
+        ////TESTCODE
+        //price["water"] = 0;
+        //price["coffee"] = 300;
+        //price["ice"] = 350;
+        ////////////
+    }
+    private void LoadCostprice()
+    {
+        MaterialCostTable costTable = new MaterialCostTable();
+        foreach (var pair in costTable.dic)
+        {
+            price[pair.Key] = pair.Value.cash;
+        }
     }
     private void LoadCoffeeData()
     {
@@ -62,6 +72,7 @@ public class Cup : MonoBehaviour
             key.Add(objectTag);
             Debug.Log(objectTag);
             int pr = FindPrice(price, objectTag);
+            Debug.Log(pr);
             GameManager.instance.PlayerMoney -= pr;
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
         }

@@ -23,19 +23,20 @@ public class GameManager : MonoBehaviour
     public string MadeInMeDrink {  get; set; }
     public bool IsGiveDrink {  get; set; }
     public int PlayerMoney { get; set; } = 10000;//플레이어 소지금
-    public int StarPoint { get; set; } = 0;//별점 아직 자세히 생각은 안함
+    public int MaxStarPoint { get; set; } = 5;
+    public int StarPoint { get; set; }
     public bool OnCupCollider { get; set; }
-
-    //TestCode
-    public int guestCount { get; set; } = 0;
-   
-
+    public bool IsCanCupSpawn { get; set; } = true;
+    
     public SpawnCup cup;
-
 
     public void SpawnCup() 
     {
         cup.SpawnCoffee(Coffee);
         Debug.Log(Coffee);
+    }
+    public void SetStartPoint()
+    {
+        StarPoint = MaxStarPoint;
     }
 }

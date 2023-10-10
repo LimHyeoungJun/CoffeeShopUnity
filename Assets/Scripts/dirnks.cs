@@ -33,6 +33,8 @@ public class dirnks : MonoBehaviour
             GameManager.instance.IsGiveDrink = true;
             //이때 NPC한테 넘어가야함
             //drinkTag;
+
+            GameManager.instance.IsCanCupSpawn = true;
             ///////////////////
             Destroy(gameObject);
 

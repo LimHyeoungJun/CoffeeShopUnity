@@ -17,4 +17,10 @@ public class ObjectController : MonoBehaviour
     }
     private static ObjectController m_instance;
 
+    public GameObject[] Cup = new GameObject[1];
+
+
+
+
+
 }

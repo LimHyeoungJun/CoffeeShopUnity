@@ -23,18 +23,22 @@ public class NPC : LivingEntity
 
     public float speed = 5f;
     private List<Data> description = null;
-    private string NPCOder = null;
-    private float timer = 30f;
+    private string NPCOder = null;//주문메뉴
+    private string NPCLine = null;//주문 대사
+    private float timer = 0;//기다림의 시간
+    private int cost = 0;//가격
+    private int number = 0;//수량
+    private int drinkcount = 0;
 
     //TestCode
     private Dictionary<string,List<Data>> oder = new Dictionary<string, List<Data>>();
 
     private void Awake()
     {
-        oder["espresso"] = new List<Data>() { new Data("원액 ", 1500) };
-        oder["ice_espresso"] = new List<Data>() { new Data("차가운 원액 ", 1500) };
-        oder["americano"] = new List<Data>() { new Data("커피에 물탄거 ", 1500) };
-        oder["ice_americano"] = new List<Data>() { new Data("커피에 얼음물 탄거 ", 2000) };
+        oder["espresso"] = new List<Data>() { new Data("에스프레소 ", 1500) };
+        oder["ice_espresso"] = new List<Data>() { new Data("차가운 에스프레소 ", 1500) };
+        oder["americano"] = new List<Data>() { new Data("아메리카노 ", 1500) };
+        oder["ice_americano"] = new List<Data>() { new Data("아이스 아메리카노 ", 2000) };
        
     }
 
@@ -46,11 +50,11 @@ public class NPC : LivingEntity
     }
     private void Update()
     {
-
         if (GameManager.instance.IsGiveDrink)
         {
             string drink = GameManager.instance.Coffee;
             CheckDrink(drink);
+            GameManager.instance.IsGiveDrink = false;
         }
         timer -= Time.deltaTime;
         UIManager.instance.TimerUpdate(timer);
@@ -61,6 +65,11 @@ public class NPC : LivingEntity
             StartCoroutine(TestCode());
         }
 
+        if(drinkcount >= number)//여러개 주문받는거 염두해 두고 만들었음
+        {
+            OnComplet();
+        }
+        
     }
     private void CheckDrink(string drink)
     {
@@ -68,25 +77,27 @@ public class NPC : LivingEntity
         {
             Debug.Log(drink + "제대로 완성");
             /////////////////////////
-            OnComplet();
+
+            ++drinkcount;
 
             //주문받음 음료가 제대로 나오면 할 행동
             DayContorller.instance.guestCount += 1;
             Debug.Log(DayContorller.instance.guestCount);
 
-            int mon = GameManager.instance.PlayerMoney += description[description.Count - 1].price;
-            UIManager.instance.MoneyUpdate(mon);
-            
-           
+            //int mon = GameManager.instance.PlayerMoney += description[description.Count - 1].price;
+            //UIManager.instance.MoneyUpdate(mon);
+
+            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
             /////////////////////////
             GameManager.instance.IsGiveDrink = false;
         }
-        else
+        else if(!NPCOder.Equals(drink))
         {
           
             Debug.Log("EZ");
-            OnFlase();
-            StartCoroutine(TestCode());
+            GameManager.instance.StarPoint -= 1;
+            //OnFlase();
+            //StartCoroutine(TestCode());
         }
     }
     IEnumerator TestCode()
@@ -97,16 +108,22 @@ public class NPC : LivingEntity
             yield return null;
         }
     }
-    public void Setup(string menu, GameObject start,GameObject end)
+
+    public void Setup(string menu, GameObject start,GameObject end, string line,float time,int cost,int num)
     {
         //this.menu = menu;
         NPCOder = menu;
+        NPCLine = line;
+        timer = time;
+        this.cost = cost;
+        number = num;
         if (oder.ContainsKey(menu))
         {
             oder.TryGetValue(menu, out description);
         }
         this.startPoint = start;
         this.endPoint = end;
+
     }
     public void SetDialogue(string dialogue)
     {
@@ -141,6 +158,6 @@ public class NPC : LivingEntity
         }
 
         Debug.Log("도착했습니다.");
-        SetDialogue(description[0].str);
+        SetDialogue(NPCLine + " ");
     }
 }

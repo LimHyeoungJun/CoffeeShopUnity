@@ -1,0 +1,12 @@
+day,name,ingredientlist1,ingredientlist2,ingredientlist3,ingredientlist4
+10,abnormal_milk_shake,coffee,strawberry,icecream,
+15,abnormal_icecream_latte,orange,icecream,honey,pineapple
+19,abnormal_affogato,chocolate,icecream,v_syrup,
+20,abnormal_americano,chocolate,water,,
+22,abnormal_apple_ade,strawberry,pineapple,milk,icecream
+24,abnormal_lemoncreamsour,milk,pineapple,,
+28,abnormal_coffee_frappe,chocolate,water,icecream,ice
+33,abnormal_strawberry_juice,lemon,soda,icecream,pineapple
+48,abnormal_grape_ade,apple,water,pineapple,ice
+53,abnormal_honey_milk_latte,cherry,pineapple,grape,coffee
+59,abnormal_apple_tea,banana,milk,coffee,apple
