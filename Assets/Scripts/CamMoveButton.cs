@@ -27,18 +27,49 @@ public class CamMoveButton : MonoBehaviour
     }
     public void onClickUperRight()
     {
-        
+        if (MaterialController.instance.UperCount >= 4)
+        {
+            MaterialController.instance.UperCount = 1;
+        }
+        else
+        {
+            MaterialController.instance.UperCount += 1;
+        }
     }
+
     public void onClickUperLeft()
     {
-
+        if (MaterialController.instance.UperCount <= 1)
+        {
+            MaterialController.instance.UperCount = 4;
+        }
+        else
+        {
+            MaterialController.instance.UperCount -= 1;
+        }
     }
+
     public void onClickUnderRight()
     {
-
+        if (MaterialController.instance.UnderCount >= 3)
+        {
+            MaterialController.instance.UnderCount = 1;
+        }
+        else
+        {
+            MaterialController.instance.UnderCount += 1;
+        }
     }
+
     public void onClickUnderLeft()
     {
-
+        if (MaterialController.instance.UnderCount <= 1)
+        {
+            MaterialController.instance.UnderCount = 3;
+        }
+        else
+        {
+            MaterialController.instance.UnderCount -= 1;
+        }
     }
 }

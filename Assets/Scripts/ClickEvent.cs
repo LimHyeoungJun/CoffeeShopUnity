@@ -50,8 +50,78 @@ public class ClickEvent : MonoBehaviour
             other.GetComponent<syrupBottle>().Click();
             check = true;
         }
-        
-       
+        if(other.CompareTag("h_syrupBottle"))
+        {
+            other.GetComponent<h_syrupBottle>().Click();
+            check = true;
+        }
+        if (other.CompareTag("v_syrupBottle"))
+        {
+            other.GetComponent<v_syrupBottle>().Click();
+            check = true;
+        }
+        if (other.CompareTag("choco"))
+        {
+            other.GetComponent<chocolatePack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("icecreampack"))
+        {
+            other.GetComponent<icecreamPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("bananapack"))
+        {
+            other.GetComponent<bananaPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("applepack"))
+        {
+            other.GetComponent<applePack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("honeypack"))
+        {
+            other.GetComponent<honeyPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("sodacandoit"))
+        {
+            other.GetComponent<sodaPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("lemonpack"))
+        {
+            other.GetComponent<lemonPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("cherrypack"))
+        {
+            other.GetComponent<cherryPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("strawberrypack"))
+        {
+            other.GetComponent<strawberryPack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("orangepack"))
+        {
+            other.GetComponent<orangePack>().Click();
+            check = true;
+        }
+        if (other.CompareTag("pineapplepack"))
+        {
+            other.GetComponent<pineapplePack>().Click();
+            check = true;
+        }
+
+        if (other.CompareTag("grapepack"))
+        {
+            other.GetComponent<grapePack>().Click();
+            check = true;
+        }
+
     }
 
 

@@ -23,7 +23,9 @@ public class NPCSpawn : MonoBehaviour
     public void Awake()
     {
         LoadGuestInfo();
+        UIManager.instance.ActiveMaterialButton(false);
     }
+    
     private void LoadGuestInfo()
     {
         GuestTable guestTable = new GuestTable();
@@ -53,6 +55,11 @@ public class NPCSpawn : MonoBehaviour
             GameManager.instance.SetStartPoint();
             Debug.Log(days);
             MaterialController.instance.MaterialSetUp();
+        }
+
+        if(DayContorller.instance.CurrentDay >= 4)
+        {
+            UIManager.instance.ActiveMaterialButton(true);
         }
 
         if(spawnList.Count < 1)

@@ -38,6 +38,63 @@ public class MaterialController : MonoBehaviour
     public GameObject Uper3;
     public GameObject Uper4;
 
+    public int UperCount { get; set; } = 1;
+    public int maxUperCount { get; set; }
+    public int UnderCount { get; set; } = 1;
+    public int maxUnderCount { get; set; }
+
+    private void Update()
+    {
+
+
+        switch(UperCount)
+        {
+            case 1:
+                Uper.SetActive(true);
+                Uper2.SetActive(false);
+                Uper3.SetActive(false);
+                Uper4.SetActive(false);
+                break;
+            case 2:
+                Uper.SetActive(false);
+                Uper2.SetActive(true);
+                Uper3.SetActive(false);
+                Uper4.SetActive(false);
+                break;
+            case 3:
+                Uper.SetActive(false);
+                Uper2.SetActive(false);
+                Uper3.SetActive(true);
+                Uper4.SetActive(false);
+                break;
+            case 4:
+                Uper.SetActive(false);
+                Uper2.SetActive(false);
+                Uper3.SetActive(false);
+                Uper4.SetActive(true);
+                break;
+        }
+        switch (UnderCount)
+        {
+            case 1:
+                Under.SetActive(true);
+                Under2.SetActive(false);
+                Under3.SetActive(false);
+                break;
+            case 2:
+                Under.SetActive(false);
+                Under2.SetActive(true);
+                Under3.SetActive(false);
+                break;
+            case 3:
+                Under.SetActive(false);
+                Under2.SetActive(false);
+                Under3.SetActive(true);
+                break;
+        }
+
+    }
+
     public void MaterialSetUp()
     {
         int currentDay = DayContorller.instance.CurrentDay;

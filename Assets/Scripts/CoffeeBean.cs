@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CoffeeBean : MonoBehaviour
 {
-   
-    
     void Update()
     {
         //transform.position = pos.position;

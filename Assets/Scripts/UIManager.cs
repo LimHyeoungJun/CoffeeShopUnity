@@ -34,6 +34,11 @@ public class UIManager : MonoBehaviour
     private bool canRestart = false;
     public GameObject obj;
 
+    public GameObject UnderRightButton;
+    public GameObject UnderLeftButton;
+    public GameObject UperRightButton;
+    public GameObject UperLeftButton;
+
     private void Start()
     {
         obj.SetActive(false);
@@ -108,6 +113,13 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void ActiveMaterialButton(bool active)
+    {
+        UnderRightButton.SetActive(active);
+        UnderLeftButton.SetActive(active);
+        UperRightButton.SetActive(active);
+        UperLeftButton.SetActive(active);
+    }
   
 }
 

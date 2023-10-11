@@ -38,6 +38,18 @@ TagManager:
   - grapepack
   - pineapplepack
   - sodacandoit
+  - chocolate
+  - icecream
+  - banana
+  - apple
+  - honey
+  - soda
+  - lemon
+  - cherry
+  - strawberry
+  - orange
+  - pineapple
+  - grape
   layers:
   - Default
   - TransparentFX
