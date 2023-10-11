@@ -115,7 +115,6 @@ public class ClickEvent : MonoBehaviour
             other.GetComponent<pineapplePack>().Click();
             check = true;
         }
-
         if (other.CompareTag("grapepack"))
         {
             other.GetComponent<grapePack>().Click();
