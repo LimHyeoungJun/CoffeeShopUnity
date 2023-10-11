@@ -1,7 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+
+[Serializable]
+public class DrinkData
+{
+    public GameObject drink;
+    public string menu;
+}
 
 public class SpawnCup : MonoBehaviour
 {
@@ -9,12 +17,8 @@ public class SpawnCup : MonoBehaviour
     public Transform CupPosition;
     private List<GameObject> Cups = new List<GameObject>();
 
-    public GameObject espressoPre;
-    public GameObject ice_espressoPre;
-    public GameObject americanoPre;
-    public GameObject ice_americanoPre;
-    public GameObject latte;
-    public GameObject ice_latte;
+    public List<DrinkData> drinks = new List<DrinkData>();
+
 
     public void click()
     {
@@ -36,81 +40,25 @@ public class SpawnCup : MonoBehaviour
         es.transform.SetParent(CupPosition.transform, true);
         es.transform.localPosition = Vector3.zero;
         es.transform.localRotation = Quaternion.identity;
+        foreach (var c in Cups)
+        {
+            Destroy(c);
+        }
+        Cups.Clear();
+        GameManager.instance.IsCanCupSpawn = false;
     }
 
     public void SpawnCoffee(string coffee)
     {
-        
-        switch (coffee)
+
+        foreach(var pair in drinks)
         {
-            case "espresso":
-                PreFabInstantiate(espressoPre);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
+            if(pair.menu.Equals(coffee))
+            {
+                PreFabInstantiate(pair.drink);
                 break;
-            case "ice_espresso":
-                PreFabInstantiate(ice_espressoPre);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-            case "americano":
-                PreFabInstantiate(americanoPre);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-            case "ice_americano":
-                PreFabInstantiate(ice_americanoPre);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-
-            case "caffelatte":
-                PreFabInstantiate(latte);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-
-            case "ice_caffelatte":
-                PreFabInstantiate(ice_latte);
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-            default:
-                Debug.Log("false");
-                foreach (var c in Cups)
-                {
-                    Destroy(c);
-                }
-                Cups.Clear();
-                GameManager.instance.IsCanCupSpawn = false;
-                break;
-            
+            }
         }
-        
     }
-
 }
+

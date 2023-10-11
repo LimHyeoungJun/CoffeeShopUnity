@@ -45,6 +45,11 @@ public class ClickEvent : MonoBehaviour
             other.GetComponent<milkBottle>().Click();
             check = true;
         }
+        if(other.CompareTag("syrupBottle"))
+        {
+            other.GetComponent<syrupBottle>().Click();
+            check = true;
+        }
         
        
     }

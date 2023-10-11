@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8219771
+      value: 1.142
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0525644
+      value: 0.48831844
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0537672
+      value: -0.483
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.88345814
+      value: 0.8834582
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.46851006
+      value: 0.4685101
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
       propertyPath: m_LocalRotation.z
@@ -63,5 +63,81 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6896716848585371735}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7810331869205701433}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3371394112976660435}
   m_SourcePrefab: {fileID: 100100000, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
+--- !u!1 &2157032076860199035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a82dde53b80ae445abbe2ffddd40d19, type: 3}
+  m_PrefabInstance: {fileID: 1237989547567820074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &6896716848585371735
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157032076860199035}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &7810331869205701433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157032076860199035}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.33294353, y: 0.5457887, z: 0.33294353}
+  m_Center: {x: -0.022870412, y: 0.27289435, z: 0}
+--- !u!114 &3371394112976660435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157032076860199035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc7fc5d5adbc44b96ffbebd7ab0731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milk: {fileID: 4463660584326231375, guid: 42d009637f12b2e4e8ffb623595142ea, type: 3}
+  MousePos: {fileID: 0}

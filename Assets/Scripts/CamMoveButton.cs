@@ -25,4 +25,20 @@ public class CamMoveButton : MonoBehaviour
     {
         GameManager.instance.IsComplet = true;
     }
+    public void onClickUperRight()
+    {
+        
+    }
+    public void onClickUperLeft()
+    {
+
+    }
+    public void onClickUnderRight()
+    {
+
+    }
+    public void onClickUnderLeft()
+    {
+
+    }
 }

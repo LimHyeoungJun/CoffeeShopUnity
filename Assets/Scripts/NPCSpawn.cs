@@ -43,6 +43,10 @@ public class NPCSpawn : MonoBehaviour
     }
     public void Update()
     {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            DayContorller.instance.CurrentDay += 1;
+        }
         if(DayContorller.instance.CurrentDay > days)
         {
             days = DayContorller.instance.CurrentDay;

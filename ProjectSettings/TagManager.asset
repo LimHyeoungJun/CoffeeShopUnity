@@ -20,6 +20,24 @@ TagManager:
   - ice_espresso
   - americano
   - ice_americano
+  - syrup
+  - syrupBottle
+  - h_syrup
+  - v_syrup
+  - choco
+  - v_syrupBottle
+  - h_syrupBottle
+  - icecreampack
+  - bananapack
+  - applepack
+  - honeypack
+  - lemonpack
+  - orangepack
+  - cherrypack
+  - strawberrypack
+  - grapepack
+  - pineapplepack
+  - sodacandoit
   layers:
   - Default
   - TransparentFX
