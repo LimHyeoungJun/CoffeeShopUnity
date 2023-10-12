@@ -39,13 +39,33 @@ public class MaterialController : MonoBehaviour
     public GameObject Uper4;
 
     public int UperCount { get; set; } = 1;
-    public int maxUperCount { get; set; }
+    public int maxUperCount { get; set; } = 1;//test
+    public int minUperCount { get; set; } = 1;
+
     public int UnderCount { get; set; } = 1;
-    public int maxUnderCount { get; set; }
+    public int maxUnderCount { get; set; } = 1;//test
+    public int minUnderCount { get; set; } = 1;
 
     private void Update()
     {
-
+        switch(DayContorller.instance.CurrentDay)
+        {
+            case 4:
+                maxUperCount = 2;
+                break;
+            case 11:
+                maxUnderCount = 2;
+                break;
+            case 21:
+                maxUperCount = 3;
+                break;
+            case 31:
+                maxUnderCount = 3;
+                break;
+            case 41:
+                maxUperCount = 4;
+                break;
+        }
 
         switch(UperCount)
         {

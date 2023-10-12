@@ -56,9 +56,11 @@ public class Cup : MonoBehaviour
         {
             key.Sort();
             GameManager.instance.Coffee = FindRecipes(coffees, key);
+            Debug.Log(GameManager.instance.Coffee);
             GameManager.instance.SpawnCup();
             GameManager.instance.IsComplet = false;
         }
+       
         
     }
     private void OnTriggerEnter(Collider other)

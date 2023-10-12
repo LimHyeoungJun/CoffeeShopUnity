@@ -19,7 +19,8 @@ public class NPCSpawn : MonoBehaviour
 
     private Dictionary<int, GuestTable.Data> guestInfo = new Dictionary<int, GuestTable.Data>();
     private Dictionary<int, BadGuestTable.Data> BadguestInfo = new Dictionary<int, BadGuestTable.Data>();
-  
+
+    private bool isone = true;
     public void Awake()
     {
         LoadGuestInfo();
@@ -57,12 +58,13 @@ public class NPCSpawn : MonoBehaviour
             MaterialController.instance.MaterialSetUp();
         }
 
-        if(DayContorller.instance.CurrentDay >= 4)
+        if (DayContorller.instance.CurrentDay >= 4&& isone)
         {
             UIManager.instance.ActiveMaterialButton(true);
+            isone = false;
         }
 
-        if(spawnList.Count < 1)
+        if (spawnList.Count < 1)
         {
             timer += Time.deltaTime;
             if (timer > SpawnTime)

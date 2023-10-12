@@ -12,14 +12,18 @@ public class CamMoveButton : MonoBehaviour
     public void OnClickCook()
     {
         mainCam.CamMove2();
-        
         UIManager.instance.button1On();
+        if (DayContorller.instance.CurrentDay >= 4)
+        {
+            UIManager.instance.ActiveMaterialButton(true);
+        }
     }
     public void OnClickOder()
     {
         mainCam.CamMove1();
         UIManager.instance.button2On();
         GameManager.instance.OnCupCollider = true;
+        UIManager.instance.ActiveMaterialButton(false);
     }
     public void onClickComplit()
     {
@@ -27,9 +31,9 @@ public class CamMoveButton : MonoBehaviour
     }
     public void onClickUperRight()
     {
-        if (MaterialController.instance.UperCount >= 4)
+        if (MaterialController.instance.UperCount >= MaterialController.instance.maxUperCount)
         {
-            MaterialController.instance.UperCount = 1;
+            MaterialController.instance.UperCount = MaterialController.instance.minUperCount;
         }
         else
         {
@@ -39,9 +43,9 @@ public class CamMoveButton : MonoBehaviour
 
     public void onClickUperLeft()
     {
-        if (MaterialController.instance.UperCount <= 1)
+        if (MaterialController.instance.UperCount <= MaterialController.instance.minUperCount)
         {
-            MaterialController.instance.UperCount = 4;
+            MaterialController.instance.UperCount = MaterialController.instance.maxUperCount;
         }
         else
         {
@@ -49,11 +53,17 @@ public class CamMoveButton : MonoBehaviour
         }
     }
 
+    public void onClickDelete()
+    {
+        Debug.Log("Delete");
+        GameManager.instance.IsDelete = true;
+    }
+
     public void onClickUnderRight()
     {
-        if (MaterialController.instance.UnderCount >= 3)
+        if (MaterialController.instance.UnderCount >= MaterialController.instance.maxUnderCount)
         {
-            MaterialController.instance.UnderCount = 1;
+            MaterialController.instance.UnderCount = MaterialController.instance.minUnderCount;
         }
         else
         {
@@ -63,9 +73,9 @@ public class CamMoveButton : MonoBehaviour
 
     public void onClickUnderLeft()
     {
-        if (MaterialController.instance.UnderCount <= 1)
+        if (MaterialController.instance.UnderCount <= MaterialController.instance.minUnderCount)
         {
-            MaterialController.instance.UnderCount = 3;
+            MaterialController.instance.UnderCount = MaterialController.instance.maxUnderCount;
         }
         else
         {

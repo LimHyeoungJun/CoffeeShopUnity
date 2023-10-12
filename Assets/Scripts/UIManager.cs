@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public GameObject mainbutton;
     public GameObject firstscreenButton;
     public GameObject complitButton;
+    public GameObject DeleteButton;
     public UnityEngine.UI.Text tx;
     public GameObject TextUI;
     public TextMeshProUGUI TimerText;
@@ -57,12 +58,14 @@ public class UIManager : MonoBehaviour
         mainbutton.SetActive(true);
         firstscreenButton.SetActive(false);
         complitButton.SetActive(true);
+        DeleteButton.SetActive(true);
     }
     public void button2On()
     {
         mainbutton.SetActive(false);
         firstscreenButton.SetActive(true);
         complitButton.SetActive(false);
+        DeleteButton.SetActive(false);
     }
 
     public void StartTexting(string text)

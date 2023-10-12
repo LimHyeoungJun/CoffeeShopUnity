@@ -19,7 +19,17 @@ public class SpawnCup : MonoBehaviour
 
     public List<DrinkData> drinks = new List<DrinkData>();
 
-
+    private void Update()
+    {
+        if (GameManager.instance.IsDelete)
+        {
+            foreach (var c in Cups)
+            {
+                Destroy(c);
+            }
+            Cups.Clear();
+        }
+    }
     public void click()
     {
         if(Cups.Count < 1 && GameManager.instance.IsCanCupSpawn)
@@ -50,6 +60,11 @@ public class SpawnCup : MonoBehaviour
 
     public void SpawnCoffee(string coffee)
     {
+        if(coffee == null)
+        {
+            PreFabInstantiate(drinks[10].drink);
+            return;
+        }
 
         foreach(var pair in drinks)
         {

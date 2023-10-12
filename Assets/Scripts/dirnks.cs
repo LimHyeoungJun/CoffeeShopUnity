@@ -23,6 +23,13 @@ public class dirnks : MonoBehaviour
         {
             co.enabled = true;
         }
+        if(GameManager.instance.IsDelete)
+        {
+            Destroy(gameObject);
+            GameManager.instance.IsDelete = false;
+            GameManager.instance.IsComplet = false;
+            GameManager.instance.IsCanCupSpawn = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
