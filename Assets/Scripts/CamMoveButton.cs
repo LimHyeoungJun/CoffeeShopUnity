@@ -8,6 +8,19 @@ public class CamMoveButton : MonoBehaviour
     public Button Cooking;
     public Button Odering;
     public CameraMove mainCam;
+    private bool isShowMaterialButton = false;
+
+    private void Update()
+    {
+        if(isShowMaterialButton)
+        {
+            UIManager.instance.ActiveMaterialButton(true);
+        }
+        else if(!isShowMaterialButton)
+        {
+            UIManager.instance.ActiveMaterialButton(false);
+        }
+    }
 
     public void OnClickCook()
     {
@@ -16,6 +29,7 @@ public class CamMoveButton : MonoBehaviour
         if (DayContorller.instance.CurrentDay >= 4)
         {
             UIManager.instance.ActiveMaterialButton(true);
+            isShowMaterialButton = true;
         }
         GameManager.instance.OnCupCollider = false;
     }
@@ -25,6 +39,7 @@ public class CamMoveButton : MonoBehaviour
         UIManager.instance.button2On();
         GameManager.instance.OnCupCollider = true;
         UIManager.instance.ActiveMaterialButton(false);
+        isShowMaterialButton = false;
     }
     public void onClickComplit()
     {

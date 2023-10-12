@@ -72,7 +72,7 @@ public class NPCSpawn : MonoBehaviour
         {
             DayContorller.instance.CurrentDay += 1;
         }
-        if(DayContorller.instance.CurrentDay > days)
+        if(DayContorller.instance.CurrentDay > days )
         {
             days = DayContorller.instance.CurrentDay;
             GameManager.instance.SetStartPoint();
