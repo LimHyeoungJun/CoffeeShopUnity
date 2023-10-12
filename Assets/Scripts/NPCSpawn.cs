@@ -163,7 +163,7 @@ public class NPCSpawn : MonoBehaviour
                 string material3 = pair.Value.Count > 2 ? TranslateToKorean(pair.Value[2]) : " ";
                 string material4 = pair.Value.Count > 3 ? TranslateToKorean(pair.Value[3]) : " ";
 
-                UIManager.instance.SetCheackBoardMenu(menu, material1, material2, material3, material4);
+                UIManager.instance.SetCheackBoardMenu(TranslateToKorean(menu), material1, material2, material3, material4);
                 return;
             }
         }

@@ -17,6 +17,7 @@ public class CamMoveButton : MonoBehaviour
         {
             UIManager.instance.ActiveMaterialButton(true);
         }
+        GameManager.instance.OnCupCollider = false;
     }
     public void OnClickOder()
     {

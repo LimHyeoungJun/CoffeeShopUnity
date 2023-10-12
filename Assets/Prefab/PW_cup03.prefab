@@ -13,6 +13,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       propertyPath: m_TagString
       value: CupSpawn
       objectReference: {fileID: 0}
@@ -26,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.24
+      value: -1.939
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.361
+      value: 2.175
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       propertyPath: m_LocalRotation.w
@@ -66,7 +70,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4533270796251605365}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
       insertIndex: -1
@@ -102,8 +109,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.24892452, y: 0.16831276, z: 0.27053636}
-  m_Center: {x: 0.05488734, y: 0.08675198, z: 0.0026305546}
+  m_Size: {x: 0.24892452, y: 0.2713372, z: 0.27053636}
+  m_Center: {x: 0.05488734, y: 0.13826379, z: 0.002630562}
 --- !u!114 &7111976780987856122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +125,169 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CupPrefab: {fileID: 634239410882688653, guid: 76b79a53e6312c94fbb178d685cd77af, type: 3}
   CupPosition: {fileID: 0}
+  drinks:
+  - drink: {fileID: 5396950155217983992, guid: e12543e36c2e4e74eb8ec3394ef92d63, type: 3}
+    menu: espresso
+  - drink: {fileID: 5396950155217983992, guid: 0e704d5e12842884397add2da00d6b9f, type: 3}
+    menu: ice_espresso
+  - drink: {fileID: 7313228610213469231, guid: cbd14e008c0e74b488953eb81b44aea8, type: 3}
+    menu: americano
+  - drink: {fileID: 7253247386925641733, guid: 67abb1dc9927fe04eb9a62837d4145d6, type: 3}
+    menu: ice_americano
+  - drink: {fileID: 2596687200831974284, guid: f52d2a201a9a0084ab30ca11ca461abe, type: 3}
+    menu: caffelatte
+  - drink: {fileID: 2596687200831974284, guid: 62011b8905819d04a877d0236720d5c3, type: 3}
+    menu: ice_caffelatte
+  - drink: {fileID: 4419960345153291873, guid: 5104fb992f4a63446935e457cf5366b5, type: 3}
+    menu: sweet_americano
+  - drink: {fileID: 4419960345153291873, guid: 5ac3e6d0be800ec498c9e8edc38726fb, type: 3}
+    menu: sweet_ice_americano
+  - drink: {fileID: 5709643695994293347, guid: 00e2e23eff673d546a8131067a12ffef, type: 3}
+    menu: sweet_caffelatte
+  - drink: {fileID: 5709643695994293347, guid: 812a665d6ca10de478e816abe90a6056, type: 3}
+    menu: sweet_ice_caffelatte
+  - drink: {fileID: 2128634935843061690, guid: c427fc90b0ae56743b98b6509df35ecd, type: 3}
+    menu: Null
+  - drink: {fileID: 33254778877197559, guid: 0418b8d5da581824b9f65d25236c673e, type: 3}
+    menu: hazelnut_americano
+  - drink: {fileID: 343534887696312691, guid: 4c875f3e61678364984eed79006581a6, type: 3}
+    menu: ice_hazelnut_americano
+  - drink: {fileID: 3031507839143359884, guid: 094d936a746523246afc35333ff64e61, type: 3}
+    menu: vanilla_latte
+  - drink: {fileID: 3031507839143359884, guid: 0af79d576cd315f4ab39dcfdcf88b0b5, type: 3}
+    menu: ice_vanila_latte
+  - drink: {fileID: 8033734468408214046, guid: 265647b24fc86f549a5115367ff9cfc7, type: 3}
+    menu: milk_choco
+  - drink: {fileID: 8033734468408214046, guid: f7c6393ccc1c5844a84e2543f54fc284, type: 3}
+    menu: ice_milk_chocho
+  - drink: {fileID: 8033734468408214046, guid: 2e95a2fd7678dff4299fb28ec4c4222d, type: 3}
+    menu: choco_latte
+  - drink: {fileID: 8033734468408214046, guid: b8c56232ffae3f3418783887bb8c0007, type: 3}
+    menu: ice_choco_latte
+  - drink: {fileID: 1304068496235993998, guid: ed82f65a0930ca34f8ca169c63f90e67, type: 3}
+    menu: affogato
+  - drink: {fileID: 6863254314971299114, guid: 3467221e98a01c940a79081829263e38, type: 3}
+    menu: icecream_latte
+  - drink: {fileID: 7253247386925641733, guid: 865db5e8b83146242b574a04e7650217, type: 3}
+    menu: milk_shake
+  - drink: {fileID: 7253247386925641733, guid: 1f9f1779e4c609f4b9bc19562cf959c9, type: 3}
+    menu: banana_milk
+  - drink: {fileID: 2079276778618056522, guid: bda17f778c0fc3040815523cc17f3d4e, type: 3}
+    menu: banana_milk_latte
+  - drink: {fileID: 2079276778618056522, guid: 446801557811a89468f9bc2b36841abf, type: 3}
+    menu: ice_banana_milk_latte
+  - drink: {fileID: 744803519634342616, guid: 11f955e45a191d44b8eda88ce6f874f1, type: 3}
+    menu: banana_shake
+  - drink: {fileID: 7253247386925641733, guid: ad00a69384e1fbf4aa36439c4c6eec8d, type: 3}
+    menu: morning_juice
+  - drink: {fileID: 7253247386925641733, guid: bad2da8a20b0e5244afc8c31b5d57670, type: 3}
+    menu: ice_morning_juice
+  - drink: {fileID: 7253247386925641733, guid: e057e0bd659bd5f45ac75e676af30227, type: 3}
+    menu: apple_shake
+  - drink: {fileID: 7313228610213469231, guid: fe52017487f123b44aa5a5f8358e2190, type: 3}
+    menu: honey_americano
+  - drink: {fileID: 7253247386925641733, guid: eaf3872c8a6cc8047aa0bfa644889960, type: 3}
+    menu: ice_honey_americano
+  - drink: {fileID: 7253247386925641733, guid: f46d8e533c38e554a9bb96d96dfbd2c1, type: 3}
+    menu: honey_milk
+  - drink: {fileID: 7253247386925641733, guid: e8eddc35922088249b22d5d85498c0b6, type: 3}
+    menu: ice_honey_milk
+  - drink: {fileID: 744803519634342616, guid: aef958082d603484fa24c51e75611e29, type: 3}
+    menu: honey_banana_shake
+  - drink: {fileID: 7253247386925641733, guid: 4623e380d5b89cb42b4fca329ba776f1, type: 3}
+    menu: apple_ade
+  - drink: {fileID: 7253247386925641733, guid: c7f5f66cd2ac92f459ce7b2cce9071fd, type: 3}
+    menu: ice_apple_ade
+  - drink: {fileID: 4557362673347643256, guid: ff8204f90a6811f4a8b4afd38d3294da, type: 3}
+    menu: caramel macchiato
+  - drink: {fileID: 6844771440740272872, guid: 987ad7bc89c10bb4095964887eab3e99, type: 3}
+    menu: lemon_ade
+  - drink: {fileID: 6844771440740272872, guid: 0c464b023c1a82f40b6e59976c92e257, type: 3}
+    menu: ice_lemon_ade
+  - drink: {fileID: 6844771440740272872, guid: 6a69fef4c24668b4187cc31aefa8f8c8, type: 3}
+    menu: lemon_creamsour
+  - drink: {fileID: 6844771440740272872, guid: a86bd48ce83e25443b1c8fac6b05eb6a, type: 3}
+    menu: cherry_ade
+  - drink: {fileID: 6844771440740272872, guid: c25053a2533b38a48b94230d5e59da9b, type: 3}
+    menu: ice_cherry_ade
+  - drink: {fileID: 6844771440740272872, guid: e9c5c0cfe8a187943833106faeda578d, type: 3}
+    menu: sour_ade
+  - drink: {fileID: 1728488774707427097, guid: f9dba812c441f274dbb4037e8607dab8, type: 3}
+    menu: coffee_frappe
+  - drink: {fileID: 1728488774707427097, guid: 27e2c7f6d08b76c4d9a94b90961af555, type: 3}
+    menu: apple_frappe
+  - drink: {fileID: 7253247386925641733, guid: 38ca8ab453406184b81d4a3623ae563b, type: 3}
+    menu: strawberry_banana_shake
+  - drink: {fileID: 6844771440740272872, guid: 006f314d1f39c574d83c4abfcce6b653, type: 3}
+    menu: strawberry_ade
+  - drink: {fileID: 6844771440740272872, guid: c21d23811ffbc6b4c9516ac0c9f3ef22, type: 3}
+    menu: ice_strawberry_ade
+  - drink: {fileID: 6844771440740272872, guid: 0d2e92688c1895e4181e47c7d760bd4d, type: 3}
+    menu: strawberry_juice
+  - drink: {fileID: 6844771440740272872, guid: bd0863b8329f61e45800bd5f1af93071, type: 3}
+    menu: ice_strawberry_juice
+  - drink: {fileID: 3749879093385003305, guid: 5e5651e4e3e811d499b8eb4a7b2a7b5e, type: 3}
+    menu: sweets_latte
+  - drink: {fileID: 6844771440740272872, guid: 942a1da13f036e44aaad3b4b4a6961ec, type: 3}
+    menu: orange_juice
+  - drink: {fileID: 6844771440740272872, guid: 2f9938e752b736146842ede65e18f2f2, type: 3}
+    menu: ice_orange_juice
+  - drink: {fileID: 7253247386925641733, guid: 7ba3a7cf5d39573478a8b40a5d55af43, type: 3}
+    menu: strawberry_milk
+  - drink: {fileID: 6844771440740272872, guid: 376a555d85f13224d8e0fd53357cde11, type: 3}
+    menu: orange_ade
+  - drink: {fileID: 6844771440740272872, guid: 9fbc40c445f844e4f836b231674ed924, type: 3}
+    menu: ice_orange_ade
+  - drink: {fileID: 6844771440740272872, guid: 577a75e181ac16649a6de8d1c8fd4cec, type: 3}
+    menu: summer_juice
+  - drink: {fileID: 6844771440740272872, guid: 9e3a737b73fe5a645bb9deb8deff3b46, type: 3}
+    menu: pineapple_juice
+  - drink: {fileID: 6844771440740272872, guid: 839754de327ff5d4d871e7480a776dc4, type: 3}
+    menu: ice_pineapple_juice
+  - drink: {fileID: 2795321786900139659, guid: b756f4432ade9b64288bc381f7bcff43, type: 3}
+    menu: cherry_pine_sour
+  - drink: {fileID: 6522787199890709594, guid: 1cf861147f9ad974daca5446c55a841d, type: 3}
+    menu: morning_fruits
+  - drink: {fileID: 6844771440740272872, guid: 6984163c925ae3d429b67b684f62d101, type: 3}
+    menu: cherry_blossom
+  - drink: {fileID: 6844771440740272872, guid: 071a19b94bceb4840ad4d72bb958ff35, type: 3}
+    menu: grape_juice
+  - drink: {fileID: 6844771440740272872, guid: 1657dc2b67dc7f94d88bc267b87543f1, type: 3}
+    menu: ice_grape_juice
+  - drink: {fileID: 6844771440740272872, guid: b8815e4e8e5f8e842a962462e3ef00f2, type: 3}
+    menu: grape_strawberry_juice
+  - drink: {fileID: 6844771440740272872, guid: c884096af2ebbd24aaf4dbff9035fe83, type: 3}
+    menu: grape_ade
+  - drink: {fileID: 6844771440740272872, guid: b4cc46cb6089d96439850ccc1de1b5d6, type: 3}
+    menu: ice_grape_ade
+  - drink: {fileID: 1764649083826069859, guid: ea7adf30a9b3fe34eae0db431e56ebc0, type: 3}
+    menu: grape_frappe
+  - drink: {fileID: 1764649083826069859, guid: c0d9976cd6aae6a4e86dee20028746aa, type: 3}
+    menu: lemon_frappe
+  - drink: {fileID: 1764649083826069859, guid: 0e81d2820f8df614290de7d6abd2d7ba, type: 3}
+    menu: strawberry_frappe
+  - drink: {fileID: 1764649083826069859, guid: 987882b4894aa2e499b296484b9aa74c, type: 3}
+    menu: cherry_frappe
+  - drink: {fileID: 1764649083826069859, guid: 34d92f4093ec3ac4e9cd0ec5505acc87, type: 3}
+    menu: orange_frappe
+  - drink: {fileID: 4809417598772353563, guid: 7481e6c16d991a042a196d67ac5853b0, type: 3}
+    menu: honey_milk_latte
+  - drink: {fileID: 6844771440740272872, guid: cb87c186cd8a47a4191315d89fcde780, type: 3}
+    menu: orange_soda
+  - drink: {fileID: 6844771440740272872, guid: a03ab81009abac44387c914fac6f008b, type: 3}
+    menu: apple_soda
+  - drink: {fileID: 6844771440740272872, guid: 35746312ae6549146878bc79e1613c90, type: 3}
+    menu: cherry_berry_ade
+  - drink: {fileID: 6844771440740272872, guid: e0d9bf70195d98b4cb0396a30b4f73b7, type: 3}
+    menu: ice_cherry_berry_ade
+  - drink: {fileID: 2596687200831974284, guid: eb40a15a34813bf41bac706bf339e825, type: 3}
+    menu: choco_vanilla_latte
+  - drink: {fileID: 1225634857198156266, guid: 609fa37bb11ef7f45943f9b1f307d7a3, type: 3}
+    menu: lemon_tea
+  - drink: {fileID: 1225634857198156266, guid: 30876b7dce5d63440a52323140690dc7, type: 3}
+    menu: apple_tea
+  - drink: {fileID: 4043841091188583972, guid: 95a0b2ce757111648a13223ac46fdb52, type: 3}
+    menu: sour_paradise
 --- !u!54 &1296473102175727249
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,3 +315,90 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1143539455188926838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 4b94946eb51a14de2b21fd2198157b02, type: 3}
+  m_PrefabInstance: {fileID: 1143539455188540402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4532615004703193213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1143539455188926838}
+    m_Modifications:
+    - target: {fileID: 1090778367598946, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_Name
+      value: Espresso
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090778367598946, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644581497186876, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+--- !u!4 &4533270796251605365 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4077614634029320, guid: ef7b06e3b2d77d74f84296706b12ee0b, type: 3}
+  m_PrefabInstance: {fileID: 4532615004703193213}
+  m_PrefabAsset: {fileID: 0}

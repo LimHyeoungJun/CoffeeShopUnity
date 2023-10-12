@@ -11,7 +11,8 @@ public class Cup : MonoBehaviour
     List<string> key = new List<string>();
 
     Dictionary<string, int> price = new Dictionary<string, int>();
-
+    public GameObject CupInDrink;
+    private int cupCount = 0;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class Cup : MonoBehaviour
         //price["coffee"] = 300;
         //price["ice"] = 350;
         ////////////
+        CupInDrink.SetActive(false);
     }
     private void LoadCostprice()
     {
@@ -64,7 +66,22 @@ public class Cup : MonoBehaviour
         {
             GameManager.instance.DeleteCup();
         }
-       
+        switch(cupCount)
+        {
+            case 1:
+                CupInDrink.SetActive(true);
+                break;
+            case 2:
+                CupInDrink.transform.localScale = new Vector3 ( 0.7f, 0.5f, 0.7f );
+                break;
+            case 3:
+                CupInDrink.transform.localScale = new Vector3(0.9f, 0.7f, 0.9f);
+                break;
+            case 4:
+                CupInDrink.transform.localScale = new Vector3(1f, 1f, 1f);
+                break;
+            default: break;
+        }
         
     }
     private void OnTriggerEnter(Collider other)
@@ -81,6 +98,7 @@ public class Cup : MonoBehaviour
             Debug.Log(pr);
             GameManager.instance.PlayerMoney -= pr;
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
+            ++cupCount;
         }
     }
 
