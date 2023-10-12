@@ -19,6 +19,8 @@ public class NPCSpawn : MonoBehaviour
 
     private Dictionary<int, GuestTable.Data> guestInfo = new Dictionary<int, GuestTable.Data>();
     private Dictionary<int, BadGuestTable.Data> BadguestInfo = new Dictionary<int, BadGuestTable.Data>();
+    private Dictionary<string,string> CheckMaterial = new Dictionary<string, string>();
+    Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
 
     private bool isone = true;
     public void Awake()
@@ -31,6 +33,9 @@ public class NPCSpawn : MonoBehaviour
     {
         GuestTable guestTable = new GuestTable();
         BadGuestTable badGuestTable = new BadGuestTable();
+        MaterialKRNameTable materialKRNameTable = new MaterialKRNameTable();
+        StringTable stringTable = new StringTable();
+        
 
         foreach (var pair in guestTable.dic)
         {
@@ -42,6 +47,23 @@ public class NPCSpawn : MonoBehaviour
             int id = pair.Key;
             BadguestInfo[id] = pair.Value;
         }
+        foreach(var pair in materialKRNameTable.dic)
+        {
+            string id = pair.Key;
+            CheckMaterial[id] = pair.Value;
+            //Debug.Log($"{pair.Key}:{pair.Value}");
+        }
+        foreach (var pair in stringTable.dic)
+        {
+            List<string> ingredients = new List<string>();
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist1)) ingredients.Add(pair.Value.ingredientlist1);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist2)) ingredients.Add(pair.Value.ingredientlist2);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist3)) ingredients.Add(pair.Value.ingredientlist3);
+            if (!string.IsNullOrEmpty(pair.Value.ingredientlist4)) ingredients.Add(pair.Value.ingredientlist4);
+            ingredients.Sort();
+            coffees[pair.Value.name] = ingredients;
+        }
+
 
     }
     public void Update()
@@ -83,6 +105,7 @@ public class NPCSpawn : MonoBehaviour
                 }
 
                 npc.Setup(guestInfo[id].drinks, Start, End, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
+                SetCheckBoardMenu(guestInfo[id].drinks);
                 spawnList.Add(npc);
                 npc.oderComplet += () =>
                 {
@@ -128,6 +151,34 @@ public class NPCSpawn : MonoBehaviour
         }
 
         return null; // 만약 조건에 맞는 키가 없다면 null을 반환
+    }
+    private void SetCheckBoardMenu(string menu)
+    {
+        foreach (var pair in coffees)
+        {
+            if (pair.Key == menu)
+            {
+                string material1 = pair.Value.Count > 0 ? TranslateToKorean(pair.Value[0]) : " ";
+                string material2 = pair.Value.Count > 1 ? TranslateToKorean(pair.Value[1]) : " ";
+                string material3 = pair.Value.Count > 2 ? TranslateToKorean(pair.Value[2]) : " ";
+                string material4 = pair.Value.Count > 3 ? TranslateToKorean(pair.Value[3]) : " ";
+
+                UIManager.instance.SetCheackBoardMenu(menu, material1, material2, material3, material4);
+                return;
+            }
+        }
+    }
+
+    private string TranslateToKorean(string material)
+    {
+        if (CheckMaterial.ContainsKey(material))
+        {
+            return CheckMaterial[material];
+        }
+        else
+        {
+            return material; // 혹은 다른 기본값
+        }
     }
 
 }

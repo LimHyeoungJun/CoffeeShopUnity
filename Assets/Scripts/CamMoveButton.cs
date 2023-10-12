@@ -82,4 +82,8 @@ public class CamMoveButton : MonoBehaviour
             MaterialController.instance.UnderCount -= 1;
         }
     }
+    public void onClickCheckBoardCloase()
+    {
+        UIManager.instance.CheckMenuBoard.SetActive(false);
+    }
 }

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5305922474068797532}
+  - component: {fileID: 9120586600077412169}
+  - component: {fileID: 1769905898047918799}
   m_Layer: 0
   m_Name: apple_tea
   m_TagString: Untagged
@@ -33,6 +35,39 @@ Transform:
   - {fileID: 1524430630332014647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9120586600077412169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225634857198156266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44eb1ae925b07094e9e86fbbce33005a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1769905898047918799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225634857198156266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4297935, y: 0.17771196, z: 0.40261543}
+  m_Center: {x: 0.0030124336, y: 0.07502651, z: -0.043534815}
 --- !u!1001 &2978631300755937052
 PrefabInstance:
   m_ObjectHideFlags: 0

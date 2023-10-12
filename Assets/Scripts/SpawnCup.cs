@@ -21,18 +21,7 @@ public class SpawnCup : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager.instance.IsDelete)
-        //{
-        //    Debug.Log("SpawnCup26");
-        //    foreach (var c in Cups)
-        //    {
-        //        Destroy(c);
-        //    }
-        //    Cups.Clear();
-        //    GameManager.instance.IsCanCupSpawn = true;
-        //    GameManager.instance.IsComplet = false;
-        //    //GameManager.instance.IsDelete = false;
-        //}
+       
     }
     public void DeleteCup()
     {

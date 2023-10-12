@@ -40,6 +40,15 @@ public class UIManager : MonoBehaviour
     public GameObject UperRightButton;
     public GameObject UperLeftButton;
 
+    public GameObject CheckMenuBoard;
+    public Text MenuName;
+    public Text Material1;
+    public Text Material2;
+    public Text Material3;
+    public Text Material4;
+    
+
+
     private void Start()
     {
         obj.SetActive(false);
@@ -115,13 +124,20 @@ public class UIManager : MonoBehaviour
 
 
     }
-
     public void ActiveMaterialButton(bool active)
     {
         UnderRightButton.SetActive(active);
         UnderLeftButton.SetActive(active);
         UperRightButton.SetActive(active);
         UperLeftButton.SetActive(active);
+    }
+    public void SetCheackBoardMenu(string menu, string material1 = " ",string material2 = " ", string material3 = " ", string material4 =" ")
+    {
+        MenuName.text = menu;
+        Material1.text = material1;
+        Material2.text = material2;
+        Material3.text = material3;
+        Material4.text = material4;
     }
   
 }
