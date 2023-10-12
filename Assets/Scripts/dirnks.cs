@@ -23,7 +23,7 @@ public class dirnks : MonoBehaviour
         {
             co.enabled = true;
         }
-        if(GameManager.instance.IsDelete)
+        else if(GameManager.instance.IsDelete)
         {
             Destroy(gameObject);
             GameManager.instance.IsDelete = false;

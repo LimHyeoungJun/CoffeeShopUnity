@@ -60,6 +60,10 @@ public class Cup : MonoBehaviour
             GameManager.instance.SpawnCup();
             GameManager.instance.IsComplet = false;
         }
+        else if(GameManager.instance.IsDelete) 
+        {
+            GameManager.instance.DeleteCup();
+        }
        
         
     }

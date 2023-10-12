@@ -40,4 +40,8 @@ public class GameManager : MonoBehaviour
     {
         StarPoint = MaxStarPoint;
     }
+    public void DeleteCup()
+    {
+        cup.DeleteCup();
+    }
 }
