@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ClockSpine : MonoBehaviour
 {
-    public float speed = 0.7f;
+    public float speed = 0.6f;
     private float timer;
     public GameObject Clock;
     private Vector3 rot;
@@ -19,7 +19,7 @@ public class ClockSpine : MonoBehaviour
 
     void Update()
     {
-        if(timer >= 255f) //255f
+        if(timer >= 15f) //255f
         {
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;

@@ -111,12 +111,12 @@ public class UIManager : MonoBehaviour
 
     public void TimerUpdate(float time)
     {
-        uint ¾ê´ÂÀÌ¸§¹¹·ÎÇÏÁö = (uint)time;
-        TimerText.text = $"00:{¾ê´ÂÀÌ¸§¹¹·ÎÇÏÁö}";
+        uint thistime = (uint)time;
+        TimerText.text = $"{thistime}";
     }
     public void MoneyUpdate(int money)
     {
-        MoneyText.text = $"$:{money}";
+        MoneyText.text = $"{money}";
     }
 
     public void Ending()
