@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     public int StarPoint { get; set; }
     public bool OnCupCollider { get; set; }
     public bool IsCanCupSpawn { get; set; } = true;
+    public int ThisDayMoney { get; set; }
+    public int CurrentDayMaterialCost {  get; set; }
+
+    public bool IsTimeToGo { get; set; }
+    public int SaveingMoney { get; set; }
     
     public SpawnCup cup;
 

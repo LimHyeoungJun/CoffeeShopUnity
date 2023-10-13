@@ -97,6 +97,7 @@ public class Cup : MonoBehaviour
             int pr = FindPrice(price, objectTag);
             Debug.Log(pr);
             GameManager.instance.PlayerMoney -= pr;
+            GameManager.instance.CurrentDayMaterialCost += pr;
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
             ++cupCount;
         }

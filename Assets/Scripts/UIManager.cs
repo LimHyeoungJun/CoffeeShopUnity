@@ -46,20 +46,34 @@ public class UIManager : MonoBehaviour
     public Text Material2;
     public Text Material3;
     public Text Material4;
-    
+
+    public TextMeshProUGUI Day;
+    public TextMeshProUGUI thisDayMoney;
+    public TextMeshProUGUI currentMaterialMoney;
+    public TextMeshProUGUI MyMoney;
+
+    public GameObject star1;
+    public GameObject star2;
+    public GameObject star3;
+    public GameObject star4;
+    public GameObject star5;
+
+    public GameObject DieImage;
+    public TextMeshProUGUI DieText;
 
 
     private void Start()
     {
         obj.SetActive(false);
+        DieImage.SetActive(false);
     }
     private void Update()
     {
-        if (canRestart && Input.GetMouseButtonDown(0)) 
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 씬을 다시 로드
-            obj.SetActive(false);
-        }
+        Day.text = DayContorller.instance.CurrentDay.ToString();
+        thisDayMoney.text = GameManager.instance.ThisDayMoney.ToString();
+        currentMaterialMoney.text = GameManager.instance.CurrentDayMaterialCost.ToString();
+        MyMoney.text = GameManager.instance.PlayerMoney.ToString();
+
     }
 
     public void button1On()
@@ -108,21 +122,35 @@ public class UIManager : MonoBehaviour
     public void Ending()
     {
         StartCoroutine(FadeInOut());
-        obj.SetActive(true);
+        
     }
 
     IEnumerator FadeInOut()
     {
         // 페이드 인
+        obj.SetActive(true);
+        GameManager.instance.PlayerMoney -= 10000;
+        //GameManager.instance.PlayerMoney -= GameManager.instance.CurrentDayMaterialCost;
         for (float i = 0; i <= 1; i += Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
         {
             //fadeImage.color = new Color(0, 0, 0, i);
             fadeImage.color = new Color(255, 255, 255, i);
             yield return null;
         }
-        canRestart = true;
+        yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
 
-
+        // 페이드 아웃
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
+        {
+            fadeImage.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        obj.SetActive(false);
+        GameManager.instance.IsTimeToGo = true;
+        
+        GameManager.instance.ThisDayMoney = 0;
+        GameManager.instance.CurrentDayMaterialCost = 0;
+        //canRestart = true;
     }
     public void ActiveMaterialButton(bool active)
     {
@@ -139,7 +167,56 @@ public class UIManager : MonoBehaviour
         Material3.text = material3;
         Material4.text = material4;
     }
+    public void StarSetUp()
+    {
+        switch(GameManager.instance.StarPoint)
+        {
+            case 0:
+                star1.SetActive(false);
+                break;
+            case 1:
+                star2.SetActive(false);
+                break;
+            case 2:
+                star3.SetActive(false);
+                break;
+            case 3:
+                star4.SetActive(false);
+                break;
+            case 4:
+                star5.SetActive(false);
+                break;
+            case 5:
+                star1.SetActive(true);
+                star2.SetActive(true);
+                star3.SetActive(true);
+                star4.SetActive(true);
+                star5.SetActive(true);
+                break;
+        }
+    }
+    
+    public void Die()
+    {
+        StartCoroutine(DieFade());
+    }
   
+    IEnumerator DieFade()
+    {
+        DieImage.SetActive(true);
+        for (float i = 0; i <= 1; i += Time.deltaTime * 0.5f)
+        {
+            DieText.color = new Color(255, 0, 0, i);
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(2f);
+        DieImage.SetActive(false);
+        GameManager.instance.IsTimeToGo = true;
+        GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
+        StarSetUp();
+        MoneyUpdate(GameManager.instance.PlayerMoney = GameManager.instance.SaveingMoney);
+
+    }
 }
 
 

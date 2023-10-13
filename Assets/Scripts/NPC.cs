@@ -50,6 +50,11 @@ public class NPC : LivingEntity
     }
     private void Update()
     {
+        if(!GameManager.instance.IsTimeToGo)
+        {
+            Destroy(gameObject);
+        }
+
         if (GameManager.instance.IsGiveDrink)
         {
             string drink = GameManager.instance.Coffee;
@@ -63,6 +68,10 @@ public class NPC : LivingEntity
             Debug.Log("손님 삐져서 나감");
             OnFlase();
             StartCoroutine(TestCode());
+
+            GameManager.instance.StarPoint -= 1;
+            UIManager.instance.StarSetUp();
+            timer = 3;
         }
 
         if(drinkcount >= number)//여러개 주문받는거 염두해 두고 만들었음
@@ -88,6 +97,7 @@ public class NPC : LivingEntity
             //UIManager.instance.MoneyUpdate(mon);
 
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+            GameManager.instance.ThisDayMoney += cost;
             /////////////////////////
             GameManager.instance.IsGiveDrink = false;
         }
@@ -96,6 +106,7 @@ public class NPC : LivingEntity
           
             Debug.Log("EZ");
             GameManager.instance.StarPoint -= 1;
+            UIManager.instance.StarSetUp();
             //OnFlase();
             //StartCoroutine(TestCode());
         }

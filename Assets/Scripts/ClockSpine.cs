@@ -1,20 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClockSpine : MonoBehaviour
 {
-    private float speed = 1.6f;
+    public float speed = 0.7f;
     private float timer;
-    public GameObject Clock;//xÃà
+    public GameObject Clock;
+    private Vector3 rot;
+    private Quaternion startRot;
+    private void Start()
+    {
+        startRot = Clock.transform.rotation;
+    }
+
 
     void Update()
     {
+        if(timer >= 255f) //255f
+        {
+            GameManager.instance.IsTimeToGo = false;
+            Clock.transform.rotation = startRot;
+            UIManager.instance.Ending();
+            DayContorller.instance.CurrentDay += 1;
+            GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
+            timer = 0;
 
-        timer += Time.deltaTime;
-
-
-
+        }
+        if(GameManager.instance.StarPoint == 0)
+        {
+            GameManager.instance.IsTimeToGo = false;
+            UIManager.instance.Die();
+            Clock.transform.rotation = startRot;
+            timer = 0;
+        }
+        if(GameManager.instance.IsTimeToGo)
+        {
+            timer += Time.deltaTime;
+            //Debug.Log(timer);
+            rot = new Vector3(0f, (speed * Time.deltaTime), 0f);
+            Clock.transform.Rotate(rot);
+        }
+        
     }
 }

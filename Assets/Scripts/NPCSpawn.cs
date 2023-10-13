@@ -8,7 +8,7 @@ public class NPCSpawn : MonoBehaviour
     public NPC NPCprefab;
 
     public float minSpawnTime = 1f;
-    public float maxSpawnTime = 5f;
+    public float maxSpawnTime = 3f;
     private float SpawnTime = 1f;
     public string menu = null;
     private float timer = 0;
@@ -27,6 +27,9 @@ public class NPCSpawn : MonoBehaviour
     {
         LoadGuestInfo();
         UIManager.instance.ActiveMaterialButton(false);
+        GameManager.instance.IsTimeToGo = true;
+        GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
+        GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
     }
     
     private void LoadGuestInfo()
@@ -68,16 +71,20 @@ public class NPCSpawn : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            DayContorller.instance.CurrentDay += 1;
-        }
+        //if(Input.GetKeyDown(KeyCode.S))
+        //{
+        //    DayContorller.instance.CurrentDay += 1;
+        //}
         if(DayContorller.instance.CurrentDay > days )
         {
             days = DayContorller.instance.CurrentDay;
             GameManager.instance.SetStartPoint();
             Debug.Log(days);
             MaterialController.instance.MaterialSetUp();
+            GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
+            UIManager.instance.StarSetUp();
+            //GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
+           
         }
 
         if (DayContorller.instance.CurrentDay >= 4&& isone)
@@ -86,7 +93,7 @@ public class NPCSpawn : MonoBehaviour
             isone = false;
         }
 
-        if (spawnList.Count < 1)
+        if (spawnList.Count < 1 && GameManager.instance.IsTimeToGo)
         {
             timer += Time.deltaTime;
             if (timer > SpawnTime)
@@ -115,17 +122,29 @@ public class NPCSpawn : MonoBehaviour
                 npc.oderFalde += () =>
                 {
                     spawnList.Remove(npc);
-                    Destroy(npc.gameObject, 3f);
+                    Destroy(npc.gameObject, 2f);
                 };
                 timer = 0f;
                 SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-                if(DayContorller.instance.guestCount == 5)
-                {
-                    //Destroy(npc);
-                    DayContorller.instance.CurrentDay += 1;
-                    DayContorller.instance.guestCount = 0;
-                }
+                //if(DayContorller.instance.guestCount == 5)//npc5명 카운트
+                //{
+                //    //Destroy(npc);
+                //    DayContorller.instance.CurrentDay += 1;
+                //    DayContorller.instance.guestCount = 0;
+                //}
+                
             }
+           
+        }
+        else if (!GameManager.instance.IsTimeToGo)//npc5명 카운트
+        {
+            Debug.Log("날짜 변경");
+            
+            foreach (var c in spawnList)
+            {
+                Destroy(c);
+            }
+            spawnList.Clear();
         }
     }
     public GuestTable.Data RandomDataByDay(int givenDay)
