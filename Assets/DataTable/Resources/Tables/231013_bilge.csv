@@ -1,0 +1,111 @@
+ingredients,kr_name
+water,물
+coffee,커피
+ice,얼음
+syrup,시럽(일반)
+h_syrup,시럽(헤이즐넛)
+v_syrup,시럽(바닐라)
+chocolate,초콜렛
+icecream,아이스크림
+banana,바나나
+apple,사과
+honey,꿀
+lemon,레몬
+orange,오렌지
+cherry,체리
+strawberry,딸기
+grape,포도
+pineapple,파인애플
+milk,우유
+soda,소다
+espresso,에스프레소
+ice_espresso,아이스 에스프레소
+americano,아메리카노
+ice_americano,아이스 아메리카노
+caffelatte,카페라떼
+ice_caffelatte,아이스 카페라떼
+sweet_americano,달달한 아메리카노
+sweet_ice_americano,아이스 달달 아메리카노
+sweet_caffelatte,달달한 카페라떼
+sweet_ice_caffelatte,아이스 달달한 카페라떼
+hazelnut_americano,헤이즐넛 아메리카노
+ice_hazelnut_americano,아이스 헤이즐넛 아메리카노
+vanilla_latte,바닐라 라떼
+ice_vanila_latte,아이스 바닐라 라떼
+milk_choco,밀크 초코
+ice_milk_chocho,아이스 밀크 초코
+choco_latte,초코 라떼
+ice_choco_latte,아이스 초코 라떼
+affogato,아포가토
+icecream_latte,아이스크림 라떼
+milk_shake,밀크 쉐이크
+banana_milk,생 바나나 우유
+banana_milk_latte,바나나 밀크 라떼
+ice_banana_milk_latte,아이스 바나나 밀크 라떼
+banana_shake,바나나 쉐이크
+morning_juice,아침 주스
+ice_morning_juice,아이스 아침 주스
+apple_shake,애플 쉐이크
+honey_americano,꿀 아메리카노
+ice_honey_americano,아이스 꿀 아메리카노
+honey_milk,허니 밀크
+ice_honey_milk,아이스 허니 밀크
+honey_banana_shake,꿀 바나나 쉐이크
+apple_ade,애플 에이드
+ice_apple_ade,아이스 애플 에이드
+caramel macchiato,카라멜 마끼아또
+lemon_ade,레몬 에이드
+ice_lemon_ade,아이스 레몬 에이드
+lemon_creamsour,레몬 크림샤워
+cherry_ade,체리 에이드
+ice_cherry_ade,아이스 체리 에이드
+sour_ade,상큼 에이드
+coffee_frappe,커피 프라페
+apple_frappe,애플 프라페
+strawberry_banana_shake,딸바 쉐이크
+strawberry_ade,스트로베리 에이드
+ice_strawberry_ade,아이스 스트로베리 에이드
+strawberry_juice,생 딸기 주스
+ice_strawberry_juice,아이스 생 딸기 주스
+sweets_latte,딸바초 라떼
+orange_juice,생 오렌지 주스
+ice_orange_juice,아이스 생 오렌지 주스
+strawberry_milk,생 딸기 우유
+orange_ade,오렌지 에이드
+ice_orange_ade,아이스 오렌지 에이드
+summer_juice,썸머 주스
+pineapple_juice,생 파인애플 주스
+ice_pineapple_juice,아이스 생 파인애플 주스
+cherry_pine_sour,체리 파인 샤워
+morning_fruits,아침 과일
+cherry_blossom,체리 블러썸
+grape_juice,생 포도 주스
+ice_grape_juice,아이스 생 포도 주스
+grape_strawberry_juice,그레잇 딸기 주스
+grape_ade,그레이프 에이드
+ice_grape_ade,아이스 그레이프 에이드
+grape_frappe,포도 프라페
+lemon_frappe,레몬 프라페
+strawberry_frappe,딸기 프라페
+cherry_frappe,체리 프라페
+orange_frappe,오렌지 프라페
+honey_milk_latte,허니 밀크 라떼
+orange_soda,오렌지 사이다
+apple_soda,애플 사이다
+cherry_berry_ade,체리 베리 에이드
+ice_cherry_berry_ade,아이스 체리 베리 에이드
+choco_vanilla_latte,초코 바닐라 라떼
+lemon_tea,레몬차
+apple_tea,사과차
+sour_paradise,사우어 파라다이스
+abnormal_milk_shake,이상한 밀크 쉐이크
+abnormal_icecream_latte,이상한 아이스크림 라떼
+abnormal_affogato,이상한 아포가토
+abnormal_americano,이상한 아메리카노
+abnormal_apple_ade,이상한 애플 에이드
+abnormal_lemoncreamsour,이상한 레몬 크림샤워
+abnormal_coffee_frappe,이상한 커피 프라페
+abnormal_strawberry_juice,이상한 딸기 주스
+abnormal_grape_ade,이상한 그레이프 에이드
+abnormal_honey_milk_latte,이상한 허니 밀크 라떼
+abnormal_apple_tea,이상한 사과차

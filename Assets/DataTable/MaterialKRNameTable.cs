@@ -19,7 +19,7 @@ public class MaterialKRNameTable : DataTable
 
     public MaterialKRNameTable()//»ı¼ºÀÚ
     {
-        path = "Tables/231012_bilge";
+        path = "Tables/231013_bilge";
         Load();
     }
 

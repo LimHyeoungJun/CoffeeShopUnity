@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NPCSpawn : MonoBehaviour
@@ -23,6 +24,7 @@ public class NPCSpawn : MonoBehaviour
     Dictionary<string, List<string>> coffees = new Dictionary<string, List<string>>();
 
     private bool isone = true;
+    private int SpawnCount;
     public void Awake()
     {
         LoadGuestInfo();
@@ -101,38 +103,68 @@ public class NPCSpawn : MonoBehaviour
 
                 var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
 
-                int id = Random.Range(10001, 10131);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
-                while (guestInfo[id].day > DayContorller.instance.CurrentDay)
-                {
-                    id = Random.Range(10001, 10131);
-                    if(guestInfo[id].day <= DayContorller.instance.CurrentDay)
-                    {
-                        break;
-                    }
-                }
 
-                npc.Setup(guestInfo[id].drinks, Start, End, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
-                SetCheckBoardMenu(guestInfo[id].drinks);
-                spawnList.Add(npc);
-                npc.oderComplet += () =>
+                if(SpawnCount == 3&&DayContorller.instance.CurrentDay >=4)
                 {
-                    spawnList.Remove(npc);
-                    Destroy(npc.gameObject, 1f);
-                };
-                npc.oderFalde += () =>
+                    int id = Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    while (BadguestInfo[id].day > DayContorller.instance.CurrentDay)
+                    {
+                        id = Random.Range(20001, 20030);
+                        if (BadguestInfo[id].day <= DayContorller.instance.CurrentDay)
+                        {
+                            break;
+                        }
+                    }
+                    npc.Setup(BadguestInfo[id].drinks, Start, End, BadguestInfo[id].line, BadguestInfo[id].waitingtime, BadguestInfo[id].cost, BadguestInfo[id].number);
+                    SetCheckBoardMenu(BadguestInfo[id].drinks);
+                    spawnList.Add(npc);
+                    npc.oderComplet += () =>
+                    {
+                        spawnList.Remove(npc);
+                        Destroy(npc.gameObject, 1f);
+                    };
+                    npc.oderFalde += () =>
+                    {
+                        spawnList.Remove(npc);
+                        Destroy(npc.gameObject, 2f);
+                    };
+                    timer = 0f;
+                    SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    ++SpawnCount;
+                }
+                else
                 {
-                    spawnList.Remove(npc);
-                    Destroy(npc.gameObject, 2f);
-                };
-                timer = 0f;
-                SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-                //if(DayContorller.instance.guestCount == 5)//npc5명 카운트
-                //{
-                //    //Destroy(npc);
-                //    DayContorller.instance.CurrentDay += 1;
-                //    DayContorller.instance.guestCount = 0;
-                //}
+                    int id = Random.Range(10001, 10131);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    while (guestInfo[id].day > DayContorller.instance.CurrentDay)
+                    {
+                        id = Random.Range(10001, 10131);
+                        if (guestInfo[id].day <= DayContorller.instance.CurrentDay)
+                        {
+                            break;
+                        }
+                    }
+                    npc.Setup(guestInfo[id].drinks, Start, End, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
+                    SetCheckBoardMenu(guestInfo[id].drinks);
+                    spawnList.Add(npc);
+                    npc.oderComplet += () =>
+                    {
+                        spawnList.Remove(npc);
+                        Destroy(npc.gameObject, 1f);
+                    };
+                    npc.oderFalde += () =>
+                    {
+                        spawnList.Remove(npc);
+                        Destroy(npc.gameObject, 2f);
+                    };
+                    timer = 0f;
+                    SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    ++SpawnCount;
+                }
                 
+
+               
+
+
             }
            
         }

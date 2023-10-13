@@ -8,7 +8,7 @@ ID,day,waitingtime,line,drinks,cost,number
 10007,3,23,달달한 아메리카노 주세요,sweet_americano,2000,1
 10008,3,23,달달하고 시원한 아메리카노 주세요,sweet_ice_americano,2500,1
 10009,3,23,달달한 카페라떼 주세요,sweet_caffelatte,2500,1
-10010,3,23,달달하고 시원한 카페라떼 있나요?,sweet_ice_caffelatte,3000,1
+10010,17,23,달달하고 시원한 카페라떼 있나요?,sweet_ice_caffelatte,3000,1
 10011,4,23,바닐라 라떼 아이스로,ice_vanila_latte,2500,1
 10012,4,23,바닐라 라떼 아주 뜨겁게 줘요,vanilla_latte,3000,1
 10013,4,23,아메리카노에 헤이즐넛 시럽 넣어주세요,hazelnut_americano,2000,1
