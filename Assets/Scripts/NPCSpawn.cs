@@ -1,12 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+[Serializable]
+public class NpcData
+{
+    [SerializeField]
+    public NPC NpcPrefab;
+    [SerializeField]
+    public string name;
+}
 public class NPCSpawn : MonoBehaviour
 {
     private List<NPC> spawnList = new List<NPC>();
     public NPC NPCprefab;
+    public List<NpcData> NPCPre = new List<NpcData>();
 
     public float minSpawnTime = 1f;
     public float maxSpawnTime = 3f;
@@ -17,6 +27,7 @@ public class NPCSpawn : MonoBehaviour
 
     public GameObject Start;
     public GameObject End;
+    public GameObject see;
 
     private Dictionary<int, GuestTable.Data> guestInfo = new Dictionary<int, GuestTable.Data>();
     private Dictionary<int, BadGuestTable.Data> BadguestInfo = new Dictionary<int, BadGuestTable.Data>();
@@ -100,56 +111,61 @@ public class NPCSpawn : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > SpawnTime)
             {
-
-                var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
-
-
-                if(SpawnCount == 3&&DayContorller.instance.CurrentDay >=4)
+                if(SpawnCount == 5 && DayContorller.instance.CurrentDay >=4)
                 {
-                    int id = Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    int id = UnityEngine.Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (BadguestInfo[id].day > DayContorller.instance.CurrentDay)
                     {
-                        id = Random.Range(20001, 20030);
+                        id = UnityEngine.Random.Range(20001, 20030);
                         if (BadguestInfo[id].day <= DayContorller.instance.CurrentDay)
                         {
                             break;
                         }
                     }
-                    npc.Setup(BadguestInfo[id].drinks, Start, End, BadguestInfo[id].line, BadguestInfo[id].waitingtime, BadguestInfo[id].cost, BadguestInfo[id].number);
+                    //여기서 나온 진상 모델이름에 맞게 모델링 list에서 찾아서 모델링 넘김
+                    //var badnpc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
+                    var badnpc = Instantiate(GetModelByName(BadguestInfo[id].customer), transform.position, Quaternion.identity);
+
+                    badnpc.Setup(BadguestInfo[id].drinks, Start, End, see, BadguestInfo[id].line, BadguestInfo[id].waitingtime, BadguestInfo[id].cost, BadguestInfo[id].number);
                     SetCheckBoardMenu(BadguestInfo[id].drinks);
-                    spawnList.Add(npc);
-                    npc.oderComplet += () =>
+                    spawnList.Add(badnpc);
+                    badnpc.oderComplet += () =>
                     {
-                        spawnList.Remove(npc);
-                        Destroy(npc.gameObject, 1f);
+                        spawnList.Remove(badnpc);
+                        Destroy(badnpc.gameObject, 1f);
                     };
-                    npc.oderFalde += () =>
+                    badnpc.oderFalde += () =>
                     {
-                        spawnList.Remove(npc);
-                        Destroy(npc.gameObject, 2f);
+                        spawnList.Remove(badnpc);
+                        Destroy(badnpc.gameObject, 2f);
                     };
                     timer = 0f;
-                    SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    SpawnTime = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
                     ++SpawnCount;
                 }
                 else
                 {
-                    int id = Random.Range(10001, 10131);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    int id = UnityEngine.Random.Range(10001, 10131);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (guestInfo[id].day > DayContorller.instance.CurrentDay)
                     {
-                        id = Random.Range(10001, 10131);
+                        id = UnityEngine.Random.Range(10001, 10131);
                         if (guestInfo[id].day <= DayContorller.instance.CurrentDay)
                         {
                             break;
                         }
                     }
-                    npc.Setup(guestInfo[id].drinks, Start, End, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
+                    //var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
+                    //NPC obj = GetModelByName("1");
+                    int n = UnityEngine.Random.Range(1, 4);
+                    var npc = Instantiate(GetModelByName(n.ToString()), transform.position, Quaternion.identity);
+                    //Debug.Log(GetModelByName(1.ToString()));
+                    npc.Setup(guestInfo[id].drinks, Start, End, see, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
                     SetCheckBoardMenu(guestInfo[id].drinks);
                     spawnList.Add(npc);
                     npc.oderComplet += () =>
                     {
                         spawnList.Remove(npc);
-                        Destroy(npc.gameObject, 1f);
+                        Destroy(npc.gameObject, 1.5f);
                     };
                     npc.oderFalde += () =>
                     {
@@ -157,7 +173,7 @@ public class NPCSpawn : MonoBehaviour
                         Destroy(npc.gameObject, 2f);
                     };
                     timer = 0f;
-                    SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    SpawnTime = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
                     ++SpawnCount;
                 }
                 
@@ -230,6 +246,21 @@ public class NPCSpawn : MonoBehaviour
         {
             return material; // 혹은 다른 기본값
         }
+    }
+    private NPC GetModelByName(string modelName)
+    {
+        foreach (var npcData in NPCPre)
+        {
+            Debug.Log($"Searching for model: {modelName}, Found model: {npcData.name}");
+
+            if (npcData.name.Equals(modelName))
+            {
+                return npcData.NpcPrefab;
+            }
+        }
+
+        Debug.LogError($"Model with name {modelName} not found!");
+        return null;
     }
 
 }

@@ -19,16 +19,8 @@ public class DayContorller : MonoBehaviour
 
     private static DayContorller m_instance;
 
-    public int CurrentDay { get; set; } = 5;
+    public int CurrentDay { get; set; } = 1;
     public int guestCount { get; set; } = 0;
 
-    void Update()
-    {
-        if(guestCount > 4) 
-        {
-            //여기 페이드인아웃UI
-            //UIManager.instance.Ending();
-        }
-
-    }
+    
 }

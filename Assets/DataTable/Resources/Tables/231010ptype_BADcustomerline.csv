@@ -1,6 +1,6 @@
 ID,day,customer,waitingtime,line,drinks,cost,number
-20001,4,man,60,아이스 아메리카노 10잔 가능할까요? 저희 동아리 회식이 있어서요,americano,150000,10
-20002,9,oldman,40,시원한 커피 줘. 한 잔!,americano,3000,2
+20001,4,man,60,아이스 아메리카노 10잔 가능할까요? 저희 동아리 회식이 있어서요,ice_americano,15000,10
+20002,9,oldman,40,시원한 커피 줘. 한 두잔!,ice_americano,3000,2
 20003,10,kids,30,아메리카노. 쪼코로 바꿔주세요,abnormal_americano,1500,1
 20004,14,women,40,"커피, 딸기, 아이스크림을 넣은 밀크 쉐이크 부탁드립니다.",abnormal_milk_shake,3000,1
 20005,15,man,60,카페 라떼 10잔 주세요. 저희 동아리 회식이 있어서 되도록 빨리 부탁합니다.,caffelatte,20000,10

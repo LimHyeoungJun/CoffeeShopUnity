@@ -12,6 +12,7 @@ public class BadGuestTable : DataTable
     {
         public int ID { get; set; }
         public int day { get; set; }
+        public string customer { get; set; }
         public float waitingtime { get; set; }
         public string line { get; set; }
         public string drinks { get; set; }

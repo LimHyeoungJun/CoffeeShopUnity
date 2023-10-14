@@ -20,8 +20,9 @@ public class NPC : LivingEntity
     private string menu;
     public GameObject startPoint;
     public GameObject endPoint;
+    public GameObject whatchingPosition;
 
-    public float speed = 5f;
+    public float speed = 4.5f;
     private List<Data> description = null;
     private string NPCOder = null;//주문메뉴
     private string NPCLine = null;//주문 대사
@@ -29,24 +30,32 @@ public class NPC : LivingEntity
     private int cost = 0;//가격
     private int number = 0;//수량
     private int drinkcount = 0;
+    private bool isone = false;
+    private bool playing = false;
 
-    //TestCode
+    private Animator NPCAnimator;
+
+    ////TestCode
     private Dictionary<string,List<Data>> oder = new Dictionary<string, List<Data>>();
 
-    private void Awake()
-    {
-        oder["espresso"] = new List<Data>() { new Data("에스프레소 ", 1500) };
-        oder["ice_espresso"] = new List<Data>() { new Data("차가운 에스프레소 ", 1500) };
-        oder["americano"] = new List<Data>() { new Data("아메리카노 ", 1500) };
-        oder["ice_americano"] = new List<Data>() { new Data("아이스 아메리카노 ", 2000) };
+    
+    //private void Awake()
+    //{
+    //    oder["espresso"] = new List<Data>() { new Data("에스프레소 ", 1500) };
+    //    oder["ice_espresso"] = new List<Data>() { new Data("차가운 에스프레소 ", 1500) };
+    //    oder["americano"] = new List<Data>() { new Data("아메리카노 ", 1500) };
+    //    oder["ice_americano"] = new List<Data>() { new Data("아이스 아메리카노 ", 2000) };
        
-    }
+    //}
+
 
     private void Start()
     {
         StartCoroutine(MoveToEndPoint());
         GameManager.instance.IsGiveDrink = false;
         UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
+        NPCAnimator = GetComponent<Animator>();
+        NPCAnimator.SetBool("isWalking", true);
     }
     private void Update()
     {
@@ -74,9 +83,16 @@ public class NPC : LivingEntity
             timer = 3;
         }
 
-        if(drinkcount >= number)//여러개 주문받는거 염두해 두고 만들었음
+        if(drinkcount == number && !playing)//여러개 주문받는거 염두해 두고 만들었음
         {
             OnComplet();
+            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+            GameManager.instance.ThisDayMoney += cost;
+            GameManager.instance.IsGiveDrink = false;
+            drinkcount= 0;
+            NPCAnimator.SetBool("isComplet", true);
+            NPCAnimator.SetBool("isFlase", false);
+            playing = true;
         }
         
     }
@@ -90,25 +106,20 @@ public class NPC : LivingEntity
             ++drinkcount;
 
             //주문받음 음료가 제대로 나오면 할 행동
-            DayContorller.instance.guestCount += 1;
-            Debug.Log(DayContorller.instance.guestCount);
-
-            //int mon = GameManager.instance.PlayerMoney += description[description.Count - 1].price;
-            //UIManager.instance.MoneyUpdate(mon);
-
-            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
-            GameManager.instance.ThisDayMoney += cost;
+            //UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+            //GameManager.instance.ThisDayMoney += cost;
+            //GameManager.instance.IsGiveDrink = false;
             /////////////////////////
-            GameManager.instance.IsGiveDrink = false;
         }
-        else if(!NPCOder.Equals(drink))
+        else if(!NPCOder.Equals(drink)/*&& !playing*/)
         {
-          
             Debug.Log("EZ");
             GameManager.instance.StarPoint -= 1;
             UIManager.instance.StarSetUp();
             //OnFlase();
             //StartCoroutine(TestCode());
+            NPCAnimator.SetBool("isFlase", true);
+            //playing = true;
         }
     }
     IEnumerator TestCode()
@@ -120,7 +131,7 @@ public class NPC : LivingEntity
         }
     }
 
-    public void Setup(string menu, GameObject start,GameObject end, string line,float time,int cost,int num)
+    public void Setup(string menu, GameObject start,GameObject end,  GameObject see ,string line,float time,int cost,int num)
     {
         //this.menu = menu;
         NPCOder = menu;
@@ -134,7 +145,7 @@ public class NPC : LivingEntity
         }
         this.startPoint = start;
         this.endPoint = end;
-
+        whatchingPosition = see;
     }
     public void SetDialogue(string dialogue)
     {
@@ -151,6 +162,7 @@ public class NPC : LivingEntity
     }
     IEnumerator MoveToEndPoint()
     {
+        
         Vector3 startPos = transform.position;
         Vector3 endPos = endPoint.transform.position;
         float journeyLength = Vector3.Distance(startPos, endPos);
@@ -165,10 +177,18 @@ public class NPC : LivingEntity
             fractionOfJourney = distanceCovered / journeyLength;
 
             transform.position = Vector3.Lerp(startPos, endPos, fractionOfJourney);
+
+            // NPC가 이동하는 동안 endPoint를 바라보게 함
+            transform.LookAt(endPos);
+
             yield return null;
         }
 
         Debug.Log("도착했습니다.");
+        NPCAnimator.SetBool("isWalking", false);
         SetDialogue(NPCLine + " ");
+
+        // NPC가 endPoint에 도착한 후, whatchingPosition을 바라보게 함
+        transform.LookAt(whatchingPosition.transform.position);
     }
 }

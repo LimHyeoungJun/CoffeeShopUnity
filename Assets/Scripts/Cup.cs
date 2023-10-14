@@ -86,7 +86,7 @@ public class Cup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("mouse"))
+        if (other.CompareTag("mouse") || other.CompareTag("Untagged"))
             return;
            
         string objectTag = other.gameObject.tag.ToString();
