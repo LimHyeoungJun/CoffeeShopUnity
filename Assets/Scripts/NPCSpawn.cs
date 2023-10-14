@@ -17,7 +17,7 @@ public class NPCSpawn : MonoBehaviour
     private List<NPC> spawnList = new List<NPC>();
     public NPC NPCprefab;
     public List<NpcData> NPCPre = new List<NpcData>();
-
+    private float WatingTimer;
     public float minSpawnTime = 1f;
     public float maxSpawnTime = 3f;
     private float SpawnTime = 1f;
@@ -178,15 +178,12 @@ public class NPCSpawn : MonoBehaviour
                 }
                 
 
-               
-
-
             }
            
         }
         else if (!GameManager.instance.IsTimeToGo)//npc5명 카운트
         {
-            Debug.Log("날짜 변경");
+            //Debug.Log("날짜 변경");
             
             foreach (var c in spawnList)
             {
@@ -194,6 +191,13 @@ public class NPCSpawn : MonoBehaviour
             }
             spawnList.Clear();
         }
+       
+        if (GameManager.instance.PlayerMoney <= 0)
+        {
+            GameManager.instance.TimerDead = true;
+        }
+
+
     }
     public GuestTable.Data RandomDataByDay(int givenDay)
     {
@@ -251,7 +255,7 @@ public class NPCSpawn : MonoBehaviour
     {
         foreach (var npcData in NPCPre)
         {
-            Debug.Log($"Searching for model: {modelName}, Found model: {npcData.name}");
+            
 
             if (npcData.name.Equals(modelName))
             {
@@ -259,7 +263,6 @@ public class NPCSpawn : MonoBehaviour
             }
         }
 
-        Debug.LogError($"Model with name {modelName} not found!");
         return null;
     }
 

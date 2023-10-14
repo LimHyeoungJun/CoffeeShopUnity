@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     private static GameManager m_instance;
-
+    
     public bool IsComplet { get; set; }
     public bool IsDelete { get; set; }
     public string Coffee { get; set; }
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public int SaveingMoney { get; set; }
     
     public SpawnCup cup;
+    public bool TimerDead { get; set; }
+    
 
     public void SpawnCup() 
     {

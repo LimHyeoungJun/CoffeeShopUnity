@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class ClockSpine : MonoBehaviour
 {
-    public float speed = 0.6f;
+
+    public float speed = 4f;
     private float timer;
     public GameObject Clock;
     private Vector3 rot;
@@ -19,7 +20,8 @@ public class ClockSpine : MonoBehaviour
 
     void Update()
     {
-        if(timer >= 90f) //255f
+        int sum = GameManager.instance.PlayerMoney;
+        if (timer >= 90f && sum - 10000 > 0) //255f
         {
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;
@@ -29,7 +31,18 @@ public class ClockSpine : MonoBehaviour
             timer = 0;
 
         }
-        if(GameManager.instance.StarPoint == 0)
+        else if(timer >= 90f && sum - 10000 <= 0)
+        {
+            GameManager.instance.IsTimeToGo = false;
+            UIManager.instance.Die();
+            Clock.transform.rotation = startRot;
+            timer = 0;
+        }
+        if(GameManager.instance.TimerDead)
+        {
+            DieSoTimeStop();
+        }
+        if(GameManager.instance.StarPoint == 0 || GameManager.instance.PlayerMoney <= 0)
         {
             GameManager.instance.IsTimeToGo = false;
             UIManager.instance.Die();
@@ -44,5 +57,13 @@ public class ClockSpine : MonoBehaviour
             Clock.transform.Rotate(rot);
         }
         
+    }
+    public void DieSoTimeStop()
+    {
+        GameManager.instance.IsTimeToGo = false;
+        UIManager.instance.Die();
+        Clock.transform.rotation = startRot;
+        timer = 0;
+        GameManager.instance.TimerDead = false;
     }
 }

@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     public GameObject DieImage;
     public TextMeshProUGUI DieText;
 
+    public CamMoveButton mainCam;
 
     private void Start()
     {
@@ -121,6 +122,7 @@ public class UIManager : MonoBehaviour
 
     public void Ending()
     {
+       
         StartCoroutine(FadeInOut());
         
     }
@@ -128,8 +130,8 @@ public class UIManager : MonoBehaviour
     IEnumerator FadeInOut()
     {
         // 페이드 인
-        obj.SetActive(true);
         GameManager.instance.PlayerMoney -= 10000;
+        obj.SetActive(true);
         //GameManager.instance.PlayerMoney -= GameManager.instance.CurrentDayMaterialCost;
         for (float i = 0; i <= 1; i += Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
         {
@@ -150,6 +152,7 @@ public class UIManager : MonoBehaviour
         
         GameManager.instance.ThisDayMoney = 0;
         GameManager.instance.CurrentDayMaterialCost = 0;
+        mainCam.OnClickOder();
         //canRestart = true;
     }
     public void ActiveMaterialButton(bool active)
@@ -215,7 +218,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
         StarSetUp();
         MoneyUpdate(GameManager.instance.PlayerMoney = GameManager.instance.SaveingMoney);
-
+        mainCam.OnClickOder();
     }
 }
 

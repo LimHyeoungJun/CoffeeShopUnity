@@ -5758,7 +5758,7 @@ Transform:
   m_GameObject: {fileID: 1021743220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 3.984, z: 2.321}
+  m_LocalPosition: {x: -0.05, y: 2.45, z: 2.321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8935,6 +8935,7 @@ MonoBehaviour:
   star5: {fileID: 1556122157}
   DieImage: {fileID: 2106548346}
   DieText: {fileID: 1484141718}
+  mainCam: {fileID: 27627533}
 --- !u!4 &1644192244
 Transform:
   m_ObjectHideFlags: 0
@@ -11512,7 +11513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951abd203551a2c4f9a068b79a8a6f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 4
   Clock: {fileID: 1862516501}
 --- !u!114 &2141634394 stripped
 MonoBehaviour:

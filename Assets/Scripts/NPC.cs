@@ -74,12 +74,12 @@ public class NPC : LivingEntity
         UIManager.instance.TimerUpdate(timer);
         if(timer < 0)
         {
-            Debug.Log("손님 삐져서 나감");
             OnFlase();
             StartCoroutine(TestCode());
 
             GameManager.instance.StarPoint -= 1;
             UIManager.instance.StarSetUp();
+            playing = true;
             timer = 3;
         }
 
@@ -100,7 +100,7 @@ public class NPC : LivingEntity
     {
         if(NPCOder.Equals(drink))
         {
-            Debug.Log(drink + "제대로 완성");
+            
             /////////////////////////
 
             ++drinkcount;
