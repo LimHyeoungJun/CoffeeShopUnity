@@ -19,7 +19,7 @@ public class ClockSpine : MonoBehaviour
 
     void Update()
     {
-        if(timer >= 255f) //255f
+        if(timer >= 90f) //255f
         {
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;
