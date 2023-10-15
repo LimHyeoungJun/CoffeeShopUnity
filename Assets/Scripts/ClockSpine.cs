@@ -26,7 +26,8 @@ public class ClockSpine : MonoBehaviour
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;
             UIManager.instance.Ending();
-            DayContorller.instance.CurrentDay += 1;
+            UIManager.instance.SetUpInfo();
+            
             GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
             timer = 0;
 

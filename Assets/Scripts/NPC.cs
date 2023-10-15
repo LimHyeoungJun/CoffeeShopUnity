@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Data
@@ -30,7 +29,6 @@ public class NPC : LivingEntity
     private int cost = 0;//가격
     private int number = 0;//수량
     private int drinkcount = 0;
-    private bool isone = false;
     private bool playing = false;
 
     private Animator NPCAnimator;

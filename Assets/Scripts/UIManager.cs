@@ -68,13 +68,20 @@ public class UIManager : MonoBehaviour
         obj.SetActive(false);
         DieImage.SetActive(false);
     }
-    private void Update()
+    //private void Update()
+    //{
+    //    Day.text = DayContorller.instance.CurrentDay.ToString();
+    //    thisDayMoney.text = GameManager.instance.ThisDayMoney.ToString();
+    //    currentMaterialMoney.text = GameManager.instance.CurrentDayMaterialCost.ToString();
+    //    MyMoney.text = GameManager.instance.PlayerMoney.ToString();
+
+    //}
+    public void SetUpInfo()
     {
         Day.text = DayContorller.instance.CurrentDay.ToString();
         thisDayMoney.text = GameManager.instance.ThisDayMoney.ToString();
         currentMaterialMoney.text = GameManager.instance.CurrentDayMaterialCost.ToString();
         MyMoney.text = GameManager.instance.PlayerMoney.ToString();
-
     }
 
     public void button1On()
@@ -139,8 +146,10 @@ public class UIManager : MonoBehaviour
             fadeImage.color = new Color(255, 255, 255, i);
             yield return null;
         }
-        yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
-
+        //yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        DayContorller.instance.CurrentDay += 1;
+        SetUpInfo();
         // 페이드 아웃
         for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
         {

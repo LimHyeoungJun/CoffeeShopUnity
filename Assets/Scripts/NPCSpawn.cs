@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [Serializable]
@@ -111,7 +110,7 @@ public class NPCSpawn : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > SpawnTime)
             {
-                if(SpawnCount == 5 && DayContorller.instance.CurrentDay >=4)
+                if(SpawnCount == 0 && DayContorller.instance.CurrentDay >=4)
                 {
                     int id = UnityEngine.Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (BadguestInfo[id].day > DayContorller.instance.CurrentDay)
@@ -145,10 +144,10 @@ public class NPCSpawn : MonoBehaviour
                 }
                 else
                 {
-                    int id = UnityEngine.Random.Range(10001, 10131);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    int id = UnityEngine.Random.Range(10001, 10198);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (guestInfo[id].day > DayContorller.instance.CurrentDay)
                     {
-                        id = UnityEngine.Random.Range(10001, 10131);
+                        id = UnityEngine.Random.Range(10001, 10198);
                         if (guestInfo[id].day <= DayContorller.instance.CurrentDay)
                         {
                             break;
