@@ -67,6 +67,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI plusMoney;
     public TextMeshProUGUI D_Day;
 
+    public Image GetoutImage;
+    public Image GetinImage;
+
     private void Start()
     {
         obj.SetActive(false);
@@ -288,6 +291,34 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         minusMoney.enabled = false;
+    }
+    public void GetInGuest()
+    {
+        StartCoroutine(IN());
+    }
+    IEnumerator IN()
+    {
+        GetinImage.gameObject.SetActive(true);
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            GetinImage.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        GetinImage.gameObject.SetActive(false);
+    }
+    public void GetOutGuest()
+    {
+        StartCoroutine(OUT());
+    }
+    IEnumerator OUT()
+    {
+        GetoutImage.gameObject.SetActive(true);
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            GetoutImage.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        GetoutImage.gameObject.SetActive(false);
     }
 }
 

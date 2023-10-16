@@ -9,6 +9,7 @@ public class CamMoveButton : MonoBehaviour
     public Button Odering;
     public CameraMove mainCam;
     private bool isShowMaterialButton = false;
+    public GameObject InfoImage;
 
     private void Update()
     {
@@ -101,5 +102,17 @@ public class CamMoveButton : MonoBehaviour
     public void onClickCheckBoardCloase()
     {
         UIManager.instance.CheckMenuBoard.SetActive(false);
+    }
+
+    public void OnClickInfoImageOn()
+    {
+        InfoImage.SetActive(true);
+        Time.timeScale = 0f;
+
+    }
+    public void OnClickInfoImageClose()
+    {
+        InfoImage.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
