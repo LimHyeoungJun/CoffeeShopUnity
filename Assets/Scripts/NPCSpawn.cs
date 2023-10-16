@@ -35,6 +35,8 @@ public class NPCSpawn : MonoBehaviour
 
     private bool isone = true;
     private int SpawnCount;
+    private bool oneone = true;
+    private int cost;
     public void Awake()
     {
         LoadGuestInfo();
@@ -42,6 +44,7 @@ public class NPCSpawn : MonoBehaviour
         GameManager.instance.IsTimeToGo = true;
         GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
         GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
+        SaveDataManager.instance.LoadData();
     }
     
     private void LoadGuestInfo()
@@ -96,7 +99,8 @@ public class NPCSpawn : MonoBehaviour
             GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
             UIManager.instance.StarSetUp();
             //GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
-           
+            SpawnCount = 0;
+            oneone = true;
         }
 
         if (DayContorller.instance.CurrentDay >= 4&& isone)
@@ -110,7 +114,7 @@ public class NPCSpawn : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > SpawnTime)
             {
-                if(SpawnCount == 0 && DayContorller.instance.CurrentDay >=4)
+                if(SpawnCount == 1 && DayContorller.instance.CurrentDay >=4)
                 {
                     int id = UnityEngine.Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (BadguestInfo[id].day > DayContorller.instance.CurrentDay)
@@ -127,6 +131,7 @@ public class NPCSpawn : MonoBehaviour
 
                     badnpc.Setup(BadguestInfo[id].drinks, Start, End, see, BadguestInfo[id].line, BadguestInfo[id].waitingtime, BadguestInfo[id].cost, BadguestInfo[id].number);
                     SetCheckBoardMenu(BadguestInfo[id].drinks);
+                    cost = BadguestInfo[id].cost;
                     spawnList.Add(badnpc);
                     badnpc.oderComplet += () =>
                     {
@@ -155,11 +160,12 @@ public class NPCSpawn : MonoBehaviour
                     }
                     //var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
                     //NPC obj = GetModelByName("1");
-                    int n = UnityEngine.Random.Range(1, 4);
+                    int n = UnityEngine.Random.Range(1, 9);
                     var npc = Instantiate(GetModelByName(n.ToString()), transform.position, Quaternion.identity);
                     //Debug.Log(GetModelByName(1.ToString()));
                     npc.Setup(guestInfo[id].drinks, Start, End, see, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
                     SetCheckBoardMenu(guestInfo[id].drinks);
+                    cost = guestInfo[id].cost;
                     spawnList.Add(npc);
                     npc.oderComplet += () =>
                     {
@@ -170,28 +176,30 @@ public class NPCSpawn : MonoBehaviour
                     {
                         spawnList.Remove(npc);
                         Destroy(npc.gameObject, 2f);
+                        
                     };
                     timer = 0f;
                     SpawnTime = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
                     ++SpawnCount;
                 }
                 
-
             }
            
         }
-        else if (!GameManager.instance.IsTimeToGo)//npc5명 카운트
+        else if (!GameManager.instance.IsTimeToGo && GameManager.instance.oneone)//npc5명 카운트
         {
             //Debug.Log("날짜 변경");
-            
             foreach (var c in spawnList)
             {
                 Destroy(c);
             }
             spawnList.Clear();
+            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney -= cost);
+            UIManager.instance.AddMinusMoney(cost);
+            GameManager.instance.oneone = false;
         }
        
-        if (GameManager.instance.PlayerMoney <= 0)
+        if (GameManager.instance.PlayerMoney <= -20000)
         {
             GameManager.instance.TimerDead = true;
         }

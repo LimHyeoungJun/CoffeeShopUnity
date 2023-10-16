@@ -21,7 +21,7 @@ public class ClockSpine : MonoBehaviour
     void Update()
     {
         int sum = GameManager.instance.PlayerMoney;
-        if (timer >= 90f && sum - 10000 > 0) //255f
+        if (timer >= 90f && sum - 10000 > -20000) //255f
         {
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;
@@ -30,9 +30,9 @@ public class ClockSpine : MonoBehaviour
             
             GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
             timer = 0;
-
+            GameManager.instance.oneone = true;
         }
-        else if(timer >= 90f && sum - 10000 <= 0)
+        else if(timer >= 90f && sum - 10000 <= -20000)
         {
             GameManager.instance.IsTimeToGo = false;
             UIManager.instance.Die();
@@ -43,7 +43,7 @@ public class ClockSpine : MonoBehaviour
         {
             DieSoTimeStop();
         }
-        if(GameManager.instance.StarPoint == 0 || GameManager.instance.PlayerMoney <= 0)
+        if(GameManager.instance.StarPoint == 0 || GameManager.instance.PlayerMoney <= -20000)
         {
             GameManager.instance.IsTimeToGo = false;
             UIManager.instance.Die();

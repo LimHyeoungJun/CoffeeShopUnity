@@ -63,10 +63,16 @@ public class UIManager : MonoBehaviour
 
     public CamMoveButton mainCam;
 
+    public TextMeshProUGUI minusMoney;
+    public TextMeshProUGUI plusMoney;
+    public TextMeshProUGUI D_Day;
+
     private void Start()
     {
         obj.SetActive(false);
         DieImage.SetActive(false);
+        minusMoney.enabled = false;
+        plusMoney.enabled = false;
     }
     //private void Update()
     //{
@@ -122,6 +128,11 @@ public class UIManager : MonoBehaviour
         uint thistime = (uint)time;
         TimerText.text = $"{thistime}";
     }
+    public void DayUpDate(int day)
+    {
+
+        D_Day.text = day.ToString();
+    }
     public void MoneyUpdate(int money)
     {
         MoneyText.text = $"{money}";
@@ -149,6 +160,7 @@ public class UIManager : MonoBehaviour
         //yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         DayContorller.instance.CurrentDay += 1;
+        SaveDataManager.instance.SaveData();
         SetUpInfo();
         // 페이드 아웃
         for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
@@ -228,6 +240,54 @@ public class UIManager : MonoBehaviour
         StarSetUp();
         MoneyUpdate(GameManager.instance.PlayerMoney = GameManager.instance.SaveingMoney);
         mainCam.OnClickOder();
+    }
+    public void AddMoney(int money)
+    {
+        var m = money.ToString();
+       StartCoroutine(AM(m));
+    }
+    IEnumerator AM(string m)
+    {
+        plusMoney.text = "+" + m;
+        plusMoney.enabled = true;
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            plusMoney.color = new Color(0, 255, 0, i);
+            yield return null;
+        }
+        plusMoney.enabled = false;
+    }
+    public void AddMinusMoney(int money)
+    {
+        var m = money.ToString();
+        StartCoroutine(AMM(m));
+    }
+    IEnumerator AMM(string m)
+    {
+        plusMoney.text = "-" + m;
+        plusMoney.enabled = true;
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            plusMoney.color = new Color(255, 0, 0, i);
+            yield return null;
+        }
+        plusMoney.enabled = false;
+    }
+    public void MinusMoney(int money) 
+    {
+        var m = money.ToString();
+        StartCoroutine(MM(m));
+    }
+    IEnumerator MM(string m) 
+    {
+        minusMoney.text = "-" + m;
+        minusMoney.enabled = true;
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            minusMoney.color = new Color(255, 0, 0, i);
+            yield return null;
+        }
+        minusMoney.enabled = false;
     }
 }
 

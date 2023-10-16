@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public string Coffee { get; set; }
     public string MadeInMeDrink {  get; set; }
     public bool IsGiveDrink {  get; set; }
-    public int PlayerMoney { get; set; } = 10000;//플레이어 소지금
+    public int PlayerMoney { get; set; }// = 10000;//플레이어 소지금
     public int MaxStarPoint { get; set; } = 5;
     public int StarPoint { get; set; }
     public bool OnCupCollider { get; set; }
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     
     public SpawnCup cup;
     public bool TimerDead { get; set; }
-    
+    public bool oneone { get; set; } = true;
 
     public void SpawnCup() 
     {

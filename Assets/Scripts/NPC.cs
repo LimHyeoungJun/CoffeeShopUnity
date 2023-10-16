@@ -25,7 +25,7 @@ public class NPC : LivingEntity
     private List<Data> description = null;
     private string NPCOder = null;//주문메뉴
     private string NPCLine = null;//주문 대사
-    private float timer = 0;//기다림의 시간
+    private float timer = 3;//기다림의 시간
     private int cost = 0;//가격
     private int number = 0;//수량
     private int drinkcount = 0;
@@ -70,11 +70,12 @@ public class NPC : LivingEntity
         }
         timer -= Time.deltaTime;
         UIManager.instance.TimerUpdate(timer);
+        UIManager.instance.DayUpDate(DayContorller.instance.CurrentDay);
         if(timer < 0)
         {
+            Debug.Log("Star");
             OnFlase();
             StartCoroutine(TestCode());
-
             GameManager.instance.StarPoint -= 1;
             UIManager.instance.StarSetUp();
             playing = true;
@@ -84,7 +85,8 @@ public class NPC : LivingEntity
         if(drinkcount == number && !playing)//여러개 주문받는거 염두해 두고 만들었음
         {
             OnComplet();
-            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+            //UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+            //UIManager.instance.AddMoney(cost);
             GameManager.instance.ThisDayMoney += cost;
             GameManager.instance.IsGiveDrink = false;
             drinkcount= 0;
@@ -109,7 +111,7 @@ public class NPC : LivingEntity
             //GameManager.instance.IsGiveDrink = false;
             /////////////////////////
         }
-        else if(!NPCOder.Equals(drink)/*&& !playing*/)
+        else if(!NPCOder.Equals(drink) /*&& !playing*/)
         {
             Debug.Log("EZ");
             GameManager.instance.StarPoint -= 1;
@@ -118,6 +120,7 @@ public class NPC : LivingEntity
             //StartCoroutine(TestCode());
             NPCAnimator.SetBool("isFlase", true);
             //playing = true;
+            Debug.Log("Star");
         }
     }
     IEnumerator TestCode()
@@ -157,6 +160,8 @@ public class NPC : LivingEntity
     public override void OnFlase()
     {
         base.OnFlase();
+        UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney -= cost);
+        UIManager.instance.AddMinusMoney(cost);
     }
     IEnumerator MoveToEndPoint()
     {
@@ -188,5 +193,7 @@ public class NPC : LivingEntity
 
         // NPC가 endPoint에 도착한 후, whatchingPosition을 바라보게 함
         transform.LookAt(whatchingPosition.transform.position);
+        UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
+        UIManager.instance.AddMoney(cost);
     }
 }

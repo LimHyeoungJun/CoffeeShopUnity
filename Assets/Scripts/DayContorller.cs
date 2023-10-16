@@ -19,7 +19,7 @@ public class DayContorller : MonoBehaviour
 
     private static DayContorller m_instance;
 
-    public int CurrentDay { get; set; } = 1;
+    public int CurrentDay { get; set; }// = 1;
     public int guestCount { get; set; } = 0;
 
     

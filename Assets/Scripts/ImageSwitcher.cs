@@ -16,6 +16,7 @@ public class ImageSwitcher : MonoBehaviour
         {
             images[i].gameObject.SetActive(false);
         }
+
     }
 
     private void Update()
@@ -23,6 +24,7 @@ public class ImageSwitcher : MonoBehaviour
         if(currentIndex == 4)
         {
             SceneManager.LoadScene("MainGame");
+           
         }
         
     }
@@ -38,5 +40,6 @@ public class ImageSwitcher : MonoBehaviour
 
         // 다음 이미지를 활성화
         images[currentIndex].gameObject.SetActive(true);
+       
     }
 }

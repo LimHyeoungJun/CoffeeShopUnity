@@ -100,6 +100,7 @@ public class Cup : MonoBehaviour
             GameManager.instance.CurrentDayMaterialCost += pr;
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
             ++cupCount;
+            UIManager.instance.MinusMoney(pr);
         }
     }
 
