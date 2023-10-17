@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public SpawnCup cup;
     public bool TimerDead { get; set; }
     public bool oneone { get; set; } = true;
+    public bool IsCompletDrink {  get; set; }
 
     public void SpawnCup() 
     {

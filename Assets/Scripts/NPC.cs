@@ -54,6 +54,7 @@ public class NPC : LivingEntity
         UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
         NPCAnimator = GetComponent<Animator>();
         NPCAnimator.SetBool("isWalking", true);
+        GameManager.instance.IsCompletDrink = false;
     }
     private void Update()
     {
@@ -93,6 +94,7 @@ public class NPC : LivingEntity
             NPCAnimator.SetBool("isComplet", true);
             NPCAnimator.SetBool("isFlase", false);
             playing = true;
+            GameManager.instance.IsCompletDrink = true;
         }
         
     }

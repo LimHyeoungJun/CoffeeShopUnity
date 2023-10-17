@@ -21,7 +21,7 @@ public class MaterialCostTable : DataTable
     public MaterialCostTable()//»ý¼ºÀÚ
     {
         //path = "Tables/ptype_getoffwork_recipes_table";
-        path = "Tables/231010_ingredients_money";
+        path = "Tables/231016_ingredients_money (1)";
         Load();
     }
 
