@@ -55,6 +55,7 @@ public class NPC : LivingEntity
         NPCAnimator = GetComponent<Animator>();
         NPCAnimator.SetBool("isWalking", true);
         GameManager.instance.IsCompletDrink = false;
+        UIManager.instance.SonNimIn();
     }
     private void Update()
     {
@@ -81,6 +82,7 @@ public class NPC : LivingEntity
             UIManager.instance.StarSetUp();
             playing = true;
             timer = 3;
+            UIManager.instance.SonNimOut();
         }
 
         if(drinkcount == number && !playing)//여러개 주문받는거 염두해 두고 만들었음

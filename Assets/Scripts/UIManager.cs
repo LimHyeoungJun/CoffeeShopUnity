@@ -67,6 +67,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI plusMoney;
     public TextMeshProUGUI D_Day;
 
+    public Image sonnimIn;
+    public Image SonnimOut;
+    public GameObject TutoInfo;
+
     private void Start()
     {
         obj.SetActive(false);
@@ -289,6 +293,37 @@ public class UIManager : MonoBehaviour
         }
         minusMoney.enabled = false;
     }
+    public void SonNimIn()
+    {
+        StartCoroutine(IN());
+    }
+    IEnumerator IN()
+    {
+        sonnimIn.gameObject.SetActive(true);
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            sonnimIn.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        sonnimIn.gameObject.SetActive(false);
+    }
+    public void SonNimOut()
+    {
+        StartCoroutine (OUT());
+    }
+    IEnumerator OUT()
+    {
+        SonnimOut.gameObject.SetActive(true);
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f)
+        {
+            SonnimOut.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        SonnimOut.gameObject.SetActive(false);
+    }
+
+
+
 }
 
 

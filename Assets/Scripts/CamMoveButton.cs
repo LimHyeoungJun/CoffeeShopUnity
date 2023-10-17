@@ -102,4 +102,15 @@ public class CamMoveButton : MonoBehaviour
     {
         UIManager.instance.CheckMenuBoard.SetActive(false);
     }
+
+    public void OnClickOpenInfo()
+    {
+        UIManager.instance.TutoInfo.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void OnClickCloseInfo()
+    {
+        UIManager.instance.TutoInfo.SetActive(false);
+        Time.timeScale = 1f;
+    }
 }
