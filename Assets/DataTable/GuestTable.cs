@@ -23,7 +23,7 @@ public class GuestTable : DataTable
     public GuestTable()//»ı¼ºÀÚ
     {
         //path = "Tables/ptype_getoffwork_recipes_table";
-        path = "Tables/20231016_normal_Customerline (1)";
+        path = "Tables/20231017_normal_Customerline";
         Load();
     }
 

@@ -56,6 +56,7 @@ public class NPC : LivingEntity
         NPCAnimator.SetBool("isWalking", true);
         GameManager.instance.IsCompletDrink = false;
         UIManager.instance.SonNimIn();
+        SoundManager.instance.PlaySonNimInSound();
     }
     private void Update()
     {

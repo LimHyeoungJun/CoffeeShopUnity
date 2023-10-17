@@ -48,6 +48,7 @@ public class NPCSpawn : MonoBehaviour
         GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
         GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
         SaveDataManager.instance.LoadData();
+        saveLine = "몰?루";
     }
     
     private void LoadGuestInfo()
@@ -152,14 +153,23 @@ public class NPCSpawn : MonoBehaviour
                 }
                 else
                 {
-                    int id = UnityEngine.Random.Range(10001, 10135);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
-                    while (guestInfo[id].day > DayContorller.instance.CurrentDay && !saveLine.Equals(guestInfo[id].line))
+                    //int id = UnityEngine.Random.Range(10001, 10135);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    //while (guestInfo[id].day > DayContorller.instance.CurrentDay)
+                    //{
+                    //    id = UnityEngine.Random.Range(10001, 10135);
+                    //    if (guestInfo[id].day <= DayContorller.instance.CurrentDay && !saveLine.Equals(guestInfo[id].drinks))
+                    //    {
+                    //        break;
+                    //    }
+                    //}
+                    int id = UnityEngine.Random.Range(10001, 10135);
+                    while (true)
                     {
-                        id = UnityEngine.Random.Range(10001, 10135);
-                        if (guestInfo[id].day <= DayContorller.instance.CurrentDay )
+                        if (guestInfo[id].day <= DayContorller.instance.CurrentDay && !saveLine.Equals(guestInfo[id].drinks))
                         {
                             break;
                         }
+                        id = UnityEngine.Random.Range(10001, 10135);
                     }
                     //var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
                     //NPC obj = GetModelByName("1");
@@ -167,7 +177,7 @@ public class NPCSpawn : MonoBehaviour
                     var npc = Instantiate(GetModelByName(n.ToString()), transform.position, Quaternion.identity);
                     //Debug.Log(GetModelByName(1.ToString()));
                     npc.Setup(guestInfo[id].drinks, Start, End, see, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
-                    saveLine = guestInfo[id].line;
+                    saveLine = guestInfo[id].drinks;
                     SetCheckBoardMenu(guestInfo[id].drinks);
                     cost = guestInfo[id].cost;
                     spawnList.Add(npc);

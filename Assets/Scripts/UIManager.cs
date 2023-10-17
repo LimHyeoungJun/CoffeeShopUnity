@@ -120,6 +120,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < text.Length; i++) 
         {
             tx.text = text.Substring(0,i);
+            SoundManager.instance.PlayTalkingNPC();
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(3f);

@@ -101,6 +101,7 @@ public class Cup : MonoBehaviour
             UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
             ++cupCount;
             UIManager.instance.MinusMoney(pr);
+            SoundManager.instance.PlayDropSound();
         }
     }
 

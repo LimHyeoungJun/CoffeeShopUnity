@@ -9,6 +9,8 @@ public class CamMoveButton : MonoBehaviour
     public Button Odering;
     public CameraMove mainCam;
     private bool isShowMaterialButton = false;
+    private bool BGM;
+    private bool SS;
 
     private void Update()
     {
@@ -112,5 +114,35 @@ public class CamMoveButton : MonoBehaviour
     {
         UIManager.instance.TutoInfo.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void BGM_ONOFF()
+    {
+        // 상태를 반전시킴
+        BGM = !BGM;
+
+        if (BGM)
+        {
+            SoundManager.instance.AudioSourceBGM.volume = 0f;
+        }
+        else
+        {
+            SoundManager.instance.AudioSourceBGM.volume = 1f;
+        }
+    }
+    public void SoundEffectOnOff()
+    {
+        // 상태를 반전시킴
+        SS = !SS;
+
+        if (SS)
+        {
+            SoundManager.instance.AudioSource.volume = 0f;
+            SoundManager.instance.AudioSourceTalk.volume = 0f;
+        }
+        else
+        {
+            SoundManager.instance.AudioSource.volume = 1f;
+            SoundManager.instance.AudioSourceTalk.volume = 1f;
+        }
     }
 }
