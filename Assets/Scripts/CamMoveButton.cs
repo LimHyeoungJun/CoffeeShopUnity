@@ -144,11 +144,13 @@ public class CamMoveButton : MonoBehaviour
         {
             SoundManager.instance.AudioSource.volume = 0f;
             SoundManager.instance.AudioSourceTalk.volume = 0f;
+            SoundManager.instance.AudioSourceSonNimInOut.volume = 0f;
         }
         else
         {
             SoundManager.instance.AudioSource.volume = 1f;
             SoundManager.instance.AudioSourceTalk.volume = 1f;
+            SoundManager.instance.AudioSourceSonNimInOut.volume = 1f;
         }
     }
     public void GoToTitle()

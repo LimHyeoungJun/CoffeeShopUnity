@@ -54,7 +54,6 @@ public class NPC : LivingEntity
         UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
         NPCAnimator = GetComponent<Animator>();
         NPCAnimator.SetBool("isWalking", true);
-        GameManager.instance.IsCompletDrink = false;
         UIManager.instance.SonNimIn();
         SoundManager.instance.PlaySonNimInSound();
     }
@@ -154,6 +153,8 @@ public class NPC : LivingEntity
         this.startPoint = start;
         this.endPoint = end;
         whatchingPosition = see;
+        GameManager.instance.IsCompletDrink = false;
+
     }
     public void SetDialogue(string dialogue)
     {

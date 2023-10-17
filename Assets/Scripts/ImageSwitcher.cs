@@ -8,6 +8,7 @@ public class ImageSwitcher : MonoBehaviour
 {
     public Image[] images; // 4장의 이미지를 저장할 배열
     private int currentIndex = 0; // 현재 이미지의 인덱스
+    public Image Loading;
 
     private void Start()
     {
@@ -40,6 +41,25 @@ public class ImageSwitcher : MonoBehaviour
 
         // 다음 이미지를 활성화
         images[currentIndex].gameObject.SetActive(true);
-       
+        if (currentIndex == 4)
+        {
+            StartCoroutine(LoadYourAsyncScene());
+        }
+    }
+
+    private IEnumerator LoadYourAsyncScene()
+    {
+        // 로딩 UI 등을 활성화
+        // 예: loadingPanel.SetActive(true);
+        Loading.gameObject.SetActive(true);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainGame");
+
+        // 로딩이 완료될 때까지 대기
+        while (!asyncLoad.isDone)
+        {
+            // 여기서 로딩 UI를 업데이트할 수 있습니다.
+            // 예: loadingBar.value = asyncLoad.progress;
+            yield return null;
+        }
     }
 }

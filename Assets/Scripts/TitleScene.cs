@@ -2,21 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleScene : MonoBehaviour
 {
+    public AudioSource ss;
+    public AudioClip clip;
+    public Image Loading;
     public void OnClickStart()
     {
         SaveDataManager.instance.ReSetData();
         Debug.Log("데이터 삭제");
+        playSound();
         SceneManager.LoadScene("StartStory");
     }
     public void OnClickReStart()
     {
-        SceneManager.LoadScene("MainGame");
+        playSound();
+        //SceneManager.LoadScene("MainGame");
+        StartCoroutine(LoadYourAsyncScene());
     }
     public void OnClickExit()
     {
+        playSound();
         Application.Quit();
+    }
+    private void playSound()
+    {
+        ss.clip = clip;
+        ss.Play();
+    }
+    private IEnumerator LoadYourAsyncScene()
+    {
+        // 로딩 UI 등을 활성화
+        // 예: loadingPanel.SetActive(true);
+        Loading.gameObject.SetActive(true);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainGame");
+
+        // 로딩이 완료될 때까지 대기
+        while (!asyncLoad.isDone)
+        {
+            // 여기서 로딩 UI를 업데이트할 수 있습니다.
+            // 예: loadingBar.value = asyncLoad.progress;
+            yield return null;
+        }
     }
 }
