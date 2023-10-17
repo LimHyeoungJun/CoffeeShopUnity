@@ -54,7 +54,6 @@ public class NPC : LivingEntity
         UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney);
         NPCAnimator = GetComponent<Animator>();
         NPCAnimator.SetBool("isWalking", true);
-        UIManager.instance.GetInGuest();
     }
     private void Update()
     {
@@ -81,7 +80,6 @@ public class NPC : LivingEntity
             UIManager.instance.StarSetUp();
             playing = true;
             timer = 3;
-            UIManager.instance.GetOutGuest();
         }
 
         if(drinkcount == number && !playing)//여러개 주문받는거 염두해 두고 만들었음
@@ -95,7 +93,6 @@ public class NPC : LivingEntity
             NPCAnimator.SetBool("isComplet", true);
             NPCAnimator.SetBool("isFlase", false);
             playing = true;
-            GameManager.instance.otherComplet = true;
         }
         
     }
@@ -150,7 +147,6 @@ public class NPC : LivingEntity
         this.startPoint = start;
         this.endPoint = end;
         whatchingPosition = see;
-        GameManager.instance.otherComplet = false;
     }
     public void SetDialogue(string dialogue)
     {

@@ -37,7 +37,6 @@ public class NPCSpawn : MonoBehaviour
     private int SpawnCount;
     private bool oneone = true;
     private int cost;
-    private string noRe;
     public void Awake()
     {
         LoadGuestInfo();
@@ -115,12 +114,12 @@ public class NPCSpawn : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > SpawnTime)
             {
-                if(SpawnCount == 1 && DayContorller.instance.CurrentDay >=3)
+                if(SpawnCount == 1 && DayContorller.instance.CurrentDay >=4)
                 {
-                    int id = UnityEngine.Random.Range(20001, 20035);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    int id = UnityEngine.Random.Range(20001, 20030);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
                     while (BadguestInfo[id].day > DayContorller.instance.CurrentDay)
                     {
-                        id = UnityEngine.Random.Range(20001, 20035);
+                        id = UnityEngine.Random.Range(20001, 20030);
                         if (BadguestInfo[id].day <= DayContorller.instance.CurrentDay)
                         {
                             break;
@@ -150,10 +149,10 @@ public class NPCSpawn : MonoBehaviour
                 }
                 else
                 {
-                    int id = UnityEngine.Random.Range(10001, 10265);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
-                    while (guestInfo[id].day > DayContorller.instance.CurrentDay&&!noRe.Equals(guestInfo[id].drinks))
+                    int id = UnityEngine.Random.Range(10001, 10198);//랜덤으로 npc소환 출현 날짜가 현재 날짜보다 높으면 낮을때 까지 다시뽑음
+                    while (guestInfo[id].day > DayContorller.instance.CurrentDay)
                     {
-                        id = UnityEngine.Random.Range(10001, 10265);
+                        id = UnityEngine.Random.Range(10001, 10198);
                         if (guestInfo[id].day <= DayContorller.instance.CurrentDay)
                         {
                             break;
@@ -165,7 +164,6 @@ public class NPCSpawn : MonoBehaviour
                     var npc = Instantiate(GetModelByName(n.ToString()), transform.position, Quaternion.identity);
                     //Debug.Log(GetModelByName(1.ToString()));
                     npc.Setup(guestInfo[id].drinks, Start, End, see, guestInfo[id].line, guestInfo[id].waitingtime, guestInfo[id].cost, guestInfo[id].number);
-                    noRe = guestInfo[id].drinks;
                     SetCheckBoardMenu(guestInfo[id].drinks);
                     cost = guestInfo[id].cost;
                     spawnList.Add(npc);
@@ -196,11 +194,8 @@ public class NPCSpawn : MonoBehaviour
                 Destroy(c);
             }
             spawnList.Clear();
-            if(!GameManager.instance.otherComplet)
-            {
-                UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney -= cost);
-                UIManager.instance.AddMinusMoney(cost);
-            }
+            UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney -= cost);
+            UIManager.instance.AddMinusMoney(cost);
             GameManager.instance.oneone = false;
         }
        
