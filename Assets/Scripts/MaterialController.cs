@@ -48,26 +48,51 @@ public class MaterialController : MonoBehaviour
 
     private void Update()
     {
-        switch(DayContorller.instance.CurrentDay)
+        //switch(DayContorller.instance.CurrentDay)
+        //{
+        //    case 4:
+        //        maxUperCount = 2;
+        //        break;
+        //    case 11:
+        //        maxUnderCount = 2;
+        //        break;
+        //    case 21:
+        //        maxUperCount = 3;
+        //        break;
+        //    case 31:
+        //        maxUnderCount = 3;
+        //        break;
+        //    case 41:
+        //        maxUperCount = 4;
+        //        break;
+        //}
+
+        if(DayContorller.instance.CurrentDay >= 41)
         {
-            case 4:
-                maxUperCount = 2;
-                break;
-            case 11:
-                maxUnderCount = 2;
-                break;
-            case 21:
-                maxUperCount = 3;
-                break;
-            case 31:
-                maxUnderCount = 3;
-                break;
-            case 41:
-                maxUperCount = 4;
-                break;
+            maxUperCount = 4;
+            maxUnderCount = 3;
+        }
+        else if(DayContorller.instance.CurrentDay >= 31)
+        {
+            maxUnderCount = 3;
+            maxUperCount = 3;
+        }
+        else if (DayContorller.instance.CurrentDay >= 21)
+        {
+            maxUperCount = 3;
+            maxUnderCount = 2;
+        }
+        else if (DayContorller.instance.CurrentDay >= 11)
+        {
+            maxUnderCount = 2;
+            maxUperCount = 2;
+        }
+        else if (DayContorller.instance.CurrentDay >= 4)
+        {
+            maxUperCount = 2;
         }
 
-        switch(UperCount)
+        switch (UperCount)
         {
             case 1:
                 Uper.SetActive(true);

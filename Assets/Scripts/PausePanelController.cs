@@ -9,6 +9,7 @@ public class PausePanelController : MonoBehaviour
     public void OpenPopup()
     {
         popupPanel.SetActive(true); // 팝업 패널을 활성화
+        SoundManager.instance.PlayClickButtonSound();
         Time.timeScale = 0f;
     }
 
@@ -17,6 +18,8 @@ public class PausePanelController : MonoBehaviour
     {
         popupPanel.SetActive(false); // 팝업 패널을 비활성화
         Time.timeScale = 1f;
+        SoundManager.instance.PlayClickButtonSound();
+
     }
 
 }
