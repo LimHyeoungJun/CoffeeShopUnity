@@ -22,12 +22,18 @@ public class SoundManager : MonoBehaviour
     public AudioSource AudioSource;
     public AudioSource AudioSourceBGM;
     public AudioSource AudioSourceTalk;
+    public AudioSource AudioSourceSonNimInOut;
+
+
     public AudioClip bgm;
     public AudioClip Drop;
     public AudioClip Get;
     public AudioClip SonnimIn;
-
     public AudioClip SonnimMal;
+    public AudioClip True;
+    public AudioClip False;
+    public AudioClip ComplEt;
+    public AudioClip ButtonClick;
 
     private void Start()
     {
@@ -49,8 +55,9 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySonNimInSound()
     {
-        AudioSource.clip = SonnimIn;
-        PlayClip();
+        AudioSourceSonNimInOut.clip = SonnimIn;
+        AudioSourceSonNimInOut.Play();
+        //PlayClip();
     }
     private void PlayClip()
     {
@@ -59,6 +66,26 @@ public class SoundManager : MonoBehaviour
     public void PlayTalkingNPC()
     {
         AudioSourceTalk.Play();
+    }
+    public void PlayTrue()
+    {
+        AudioSource.clip = True;
+        PlayClip();
+    }
+    public void PlayFalse()
+    {
+        AudioSource.clip = False;
+        PlayClip();
+    }
+    public void PlayComplet()
+    {
+        AudioSource.clip = ComplEt;
+        PlayClip();
+    }
+    public void PlayClickButtonSound()
+    {
+        AudioSource.clip = ButtonClick;
+        AudioSource.Play();
     }
 
 }

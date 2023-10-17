@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CamMoveButton : MonoBehaviour
@@ -103,16 +104,21 @@ public class CamMoveButton : MonoBehaviour
     public void onClickCheckBoardCloase()
     {
         UIManager.instance.CheckMenuBoard.SetActive(false);
+        SoundManager.instance.PlayClickButtonSound();
+
     }
 
     public void OnClickOpenInfo()
     {
         UIManager.instance.TutoInfo.SetActive(true);
+        SoundManager.instance.PlayClickButtonSound();
         Time.timeScale = 0f;
     }
     public void OnClickCloseInfo()
     {
         UIManager.instance.TutoInfo.SetActive(false);
+        SoundManager.instance.PlayClickButtonSound();
+
         Time.timeScale = 1f;
     }
     public void BGM_ONOFF()
@@ -144,5 +150,14 @@ public class CamMoveButton : MonoBehaviour
             SoundManager.instance.AudioSource.volume = 1f;
             SoundManager.instance.AudioSourceTalk.volume = 1f;
         }
+    }
+    public void GoToTitle()
+    {
+        SceneManager.LoadScene("TitleScenes");
+        Time.timeScale = 1f;
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

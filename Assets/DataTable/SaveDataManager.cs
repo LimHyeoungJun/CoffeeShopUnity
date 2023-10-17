@@ -55,7 +55,7 @@ public class SaveDataManager
         //    SaveData();
         //}
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("Day", 1);
+        PlayerPrefs.SetInt("Day", 5);
         PlayerPrefs.SetInt("Money", 10000);
         PlayerPrefs.Save();
         Debug.Log("ReSetData called");

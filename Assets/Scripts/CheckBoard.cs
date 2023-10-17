@@ -20,6 +20,7 @@ public class CheckBoard : MonoBehaviour
         if (isMouseOver && Input.GetMouseButtonDown(0))
         {
             UIManager.instance.CheckMenuBoard.SetActive(true);
+            SoundManager.instance.PlayClickButtonSound();
         }
     }
 

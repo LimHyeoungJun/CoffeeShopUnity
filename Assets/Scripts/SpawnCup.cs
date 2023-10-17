@@ -74,6 +74,7 @@ public class SpawnCup : MonoBehaviour
             if(pair.menu.Equals(coffee))
             {
                 PreFabInstantiate(pair.drink);
+                SoundManager.instance.PlayComplet();
                 break;
             }
         }

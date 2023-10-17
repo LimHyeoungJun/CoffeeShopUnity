@@ -98,6 +98,7 @@ public class NPC : LivingEntity
             NPCAnimator.SetBool("isFlase", false);
             playing = true;
             GameManager.instance.IsCompletDrink = true;
+            SoundManager.instance.PlayTrue();
         }
         
     }
@@ -126,6 +127,7 @@ public class NPC : LivingEntity
             NPCAnimator.SetBool("isFlase", true);
             //playing = true;
             Debug.Log("Star");
+            SoundManager.instance.PlayFalse();
         }
     }
     IEnumerator TestCode()
