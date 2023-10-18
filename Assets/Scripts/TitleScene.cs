@@ -12,6 +12,8 @@ public class TitleScene : MonoBehaviour
     public AudioSource bgm;
     public AudioClip bgmClip;
 
+    public GameObject Credit;
+
     //betaCode
     public GameObject ReStartButton;
 
@@ -23,7 +25,7 @@ public class TitleScene : MonoBehaviour
         bgm.Play();
         Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
         //BetaCode저장되있는 데이터가 있다면 버튼 표기 없다면 버튼 숨김
-        if(PlayerPrefs.HasKey("Day")|| PlayerPrefs.HasKey("Money"))
+        if (PlayerPrefs.HasKey("Day") || PlayerPrefs.HasKey("Money"))
         {
             ReStartButton.SetActive(true);
         }
@@ -62,12 +64,19 @@ public class TitleScene : MonoBehaviour
         Loading.gameObject.SetActive(true);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainGame");
 
-        // 로딩이 완료될 때까지 대기
+
         while (!asyncLoad.isDone)
         {
-            // 여기서 로딩 UI를 업데이트할 수 있습니다.
-            // 예: loadingBar.value = asyncLoad.progress;
+
             yield return null;
         }
+    }
+    public void OnClickOpenCredit()
+    {
+        Credit.gameObject.SetActive(true);
+    }
+    public void OnClickCloseCredit()
+    {
+        Credit.gameObject.SetActive(false);
     }
 }
