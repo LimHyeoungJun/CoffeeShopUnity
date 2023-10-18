@@ -8194,7 +8194,7 @@ Transform:
   m_GameObject: {fileID: 1097682740}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9999839, z: -0, w: -0.0056782514}
-  m_LocalPosition: {x: 8.38, y: 0, z: -1.24}
+  m_LocalPosition: {x: 5.54, y: 0, z: -1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8481,6 +8481,8 @@ MonoBehaviour:
     activeDay: 8
   - materialObject: {fileID: 1975860875}
     activeDay: 11
+  - materialObject: {fileID: 16486284}
+    activeDay: 14
   - materialObject: {fileID: 60734654}
     activeDay: 14
   - materialObject: {fileID: 1166166554}
@@ -8491,8 +8493,6 @@ MonoBehaviour:
     activeDay: 23
   - materialObject: {fileID: 1413386688}
     activeDay: 26
-  - materialObject: {fileID: 16486284}
-    activeDay: 31
   - materialObject: {fileID: 1247119799}
     activeDay: 36
   - materialObject: {fileID: 267091788}
