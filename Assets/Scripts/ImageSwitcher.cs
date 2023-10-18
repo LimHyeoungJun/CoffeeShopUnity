@@ -10,6 +10,9 @@ public class ImageSwitcher : MonoBehaviour
     private int currentIndex = 0; // 현재 이미지의 인덱스
     public Image Loading;
 
+    public AudioSource bgm;
+    public AudioClip bgmClip;
+
     private void Start()
     {
         // 초기 이미지만 활성화, 나머지 이미지 비활성화
@@ -17,6 +20,11 @@ public class ImageSwitcher : MonoBehaviour
         {
             images[i].gameObject.SetActive(false);
         }
+        bgm.clip = bgmClip;
+        bgm.volume = 0.5f;
+        bgm.loop = true;
+        bgm.Play();
+        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
 
     }
 

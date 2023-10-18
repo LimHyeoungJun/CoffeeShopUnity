@@ -9,6 +9,16 @@ public class TitleScene : MonoBehaviour
     public AudioSource ss;
     public AudioClip clip;
     public Image Loading;
+    public AudioSource bgm;
+    public AudioClip bgmClip;
+    private void Awake()
+    {
+        bgm.clip = bgmClip;
+        bgm.volume = 0.5f;
+        bgm.loop = true;
+        bgm.Play();
+        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
+    }
     public void OnClickStart()
     {
         SaveDataManager.instance.ReSetData();

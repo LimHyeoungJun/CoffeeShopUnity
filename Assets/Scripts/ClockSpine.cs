@@ -15,6 +15,7 @@ public class ClockSpine : MonoBehaviour
     private void Start()
     {
         startRot = Clock.transform.rotation;
+        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
     }
 
 

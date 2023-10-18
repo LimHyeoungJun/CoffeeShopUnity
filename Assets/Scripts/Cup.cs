@@ -102,6 +102,7 @@ public class Cup : MonoBehaviour
             ++cupCount;
             UIManager.instance.MinusMoney(pr);
             SoundManager.instance.PlayDropSound();
+            UIManager.instance.SetCupInSideMaterial(key.Count, objectTag);
         }
     }
 

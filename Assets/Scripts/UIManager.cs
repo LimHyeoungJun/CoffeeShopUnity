@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,17 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+[Serializable]
+public class CupInSideData
+{
+    [SerializeField]
+    public Sprite CupInSideImage;
+    [SerializeField]
+    public string name;
+}
+
+
 
 public class UIManager : MonoBehaviour
 {
@@ -70,6 +82,13 @@ public class UIManager : MonoBehaviour
     public Image sonnimIn;
     public Image SonnimOut;
     public GameObject TutoInfo;
+
+    public List<CupInSideData> CupData = new List<CupInSideData>();
+    public GameObject CupInSideWhat;
+    public Image CupInMaterial1;
+    public Image CupInMaterial2;
+    public Image CupInMaterial3;
+    public Image CupInMaterial4;
 
     private void Start()
     {
@@ -323,7 +342,76 @@ public class UIManager : MonoBehaviour
         SonnimOut.gameObject.SetActive(false);
     }
 
+    public void DeleteCupInSideMaterial()
+    {
+        CupInMaterial1.sprite = null;
+        CupInMaterial1.color = new Color(255, 255, 255, 0);
 
+        CupInMaterial2.sprite = null;
+        CupInMaterial2.color = new Color(255, 255, 255, 0);
+
+        CupInMaterial3.sprite = null;
+        CupInMaterial3.color = new Color(255, 255, 255, 0);
+
+        CupInMaterial4.sprite = null;
+        CupInMaterial4.color = new Color(255, 255, 255, 0);
+
+    }
+
+    public void SetCupInSideMaterial(int num, string name)
+    {
+        switch(num)
+        {
+            case 1:
+                foreach(var c in CupData)
+                {
+                    if(c.name == name)
+                    {
+                        CupInMaterial1.sprite = c.CupInSideImage;
+                        CupInMaterial1.color = new Color(255, 255, 255, 255);
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                foreach (var c in CupData)
+                {
+                    if (c.name == name)
+                    {
+                        CupInMaterial2.sprite = c.CupInSideImage;
+                        CupInMaterial2.color = new Color(255, 255, 255, 255);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                foreach (var c in CupData)
+                {
+                    if (c.name == name)
+                    {
+                        CupInMaterial3.sprite = c.CupInSideImage;
+                        CupInMaterial3.color = new Color(255, 255, 255, 255);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                foreach (var c in CupData)
+                {
+                    if (c.name == name)
+                    {
+                        CupInMaterial4.sprite = c.CupInSideImage;
+                        CupInMaterial4.color = new Color(255, 255, 255, 255);
+                        break;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
+
+    }
 
 }
 

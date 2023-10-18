@@ -35,6 +35,7 @@ public class CamMoveButton : MonoBehaviour
             isShowMaterialButton = true;
         }
         GameManager.instance.OnCupCollider = false;
+        UIManager.instance.CupInSideWhat.SetActive(true);
     }
     public void OnClickOder()
     {
@@ -43,10 +44,13 @@ public class CamMoveButton : MonoBehaviour
         GameManager.instance.OnCupCollider = true;
         UIManager.instance.ActiveMaterialButton(false);
         isShowMaterialButton = false;
+        UIManager.instance.CupInSideWhat.SetActive(false);
+
     }
     public void onClickComplit()
     {
         GameManager.instance.IsComplet = true;
+        UIManager.instance.DeleteCupInSideMaterial();
     }
     public void onClickUperRight()
     {
@@ -76,6 +80,7 @@ public class CamMoveButton : MonoBehaviour
     {
         Debug.Log("Delete");
         GameManager.instance.IsDelete = true;
+        UIManager.instance.DeleteCupInSideMaterial();
     }
 
     public void onClickUnderRight()
