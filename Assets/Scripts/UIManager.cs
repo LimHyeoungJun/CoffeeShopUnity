@@ -44,7 +44,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI MoneyText;
 
     public Image fadeImage; 
-    private bool canRestart = false;
     public GameObject obj;
 
     public GameObject UnderRightButton;

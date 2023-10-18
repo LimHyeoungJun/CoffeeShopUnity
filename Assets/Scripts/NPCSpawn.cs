@@ -46,8 +46,8 @@ public class NPCSpawn : MonoBehaviour
         UIManager.instance.ActiveMaterialButton(false);
         GameManager.instance.IsTimeToGo = true;
         GameManager.instance.StarPoint = GameManager.instance.MaxStarPoint;
-        GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
         SaveDataManager.instance.LoadData();
+        GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
         saveLine = "¸ô?·ç";
     }
     
@@ -216,6 +216,8 @@ public class NPCSpawn : MonoBehaviour
             }
             
             GameManager.instance.oneone = false;
+            SpawnCount = 0;
+            timer = 0f;
         }
        
         if (GameManager.instance.PlayerMoney <= -20000)
