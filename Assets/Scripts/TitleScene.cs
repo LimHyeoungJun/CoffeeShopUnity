@@ -11,6 +11,10 @@ public class TitleScene : MonoBehaviour
     public Image Loading;
     public AudioSource bgm;
     public AudioClip bgmClip;
+
+    //betaCode
+    public GameObject ReStartButton;
+
     private void Awake()
     {
         bgm.clip = bgmClip;
@@ -18,6 +22,15 @@ public class TitleScene : MonoBehaviour
         bgm.loop = true;
         bgm.Play();
         Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
+        //BetaCode저장되있는 데이터가 있다면 버튼 표기 없다면 버튼 숨김
+        if(PlayerPrefs.HasKey("Day")|| PlayerPrefs.HasKey("Money"))
+        {
+            ReStartButton.SetActive(true);
+        }
+        else
+        {
+            ReStartButton.SetActive(false);
+        }
     }
     public void OnClickStart()
     {

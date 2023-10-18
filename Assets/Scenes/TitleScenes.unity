@@ -443,6 +443,7 @@ MonoBehaviour:
   Loading: {fileID: 1020917715}
   bgm: {fileID: 162847694}
   bgmClip: {fileID: 8300000, guid: f0eb1412c4bfe2f4794a0ed288ea0146, type: 3}
+  ReStartButton: {fileID: 776133889}
 --- !u!1 &240092978
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &776133890
 RectTransform:
   m_ObjectHideFlags: 0
@@ -706,7 +707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -114.0047}
+  m_AnchoredPosition: {x: 0.000061035, y: 17}
   m_SizeDelta: {x: 457.4601, y: 75.2656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776133891
@@ -1043,7 +1044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 21}
+  m_AnchoredPosition: {x: -0.000030517, y: -119}
   m_SizeDelta: {x: 457.4601, y: 75.2656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134575555

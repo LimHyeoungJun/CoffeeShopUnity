@@ -17,8 +17,8 @@ public class NPCSpawn : MonoBehaviour
     public NPC NPCprefab;
     public List<NpcData> NPCPre = new List<NpcData>();
     private float WatingTimer;
-    public float minSpawnTime = 1f;
-    public float maxSpawnTime = 3f;
+    public float minSpawnTime = 0.5f;
+    public float maxSpawnTime = 1f;
     private float SpawnTime = 1f;
     public string menu = null;
     private float timer = 0;
@@ -162,14 +162,14 @@ public class NPCSpawn : MonoBehaviour
                     //        break;
                     //    }
                     //}
-                    int id = UnityEngine.Random.Range(10001, 10135);
+                    int id = UnityEngine.Random.Range(10001, 10366);
                     while (true)
                     {
                         if (guestInfo[id].day <= DayContorller.instance.CurrentDay && !saveLine.Equals(guestInfo[id].drinks))
                         {
                             break;
                         }
-                        id = UnityEngine.Random.Range(10001, 10135);
+                        id = UnityEngine.Random.Range(10001, 10366);
                     }
                     //var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
                     //NPC obj = GetModelByName("1");
@@ -218,6 +218,7 @@ public class NPCSpawn : MonoBehaviour
             GameManager.instance.oneone = false;
             SpawnCount = 0;
             timer = 0f;
+            GameManager.instance.PlayerMoney = GameManager.instance.SaveingMoney;
         }
        
         if (GameManager.instance.PlayerMoney <= -20000)
