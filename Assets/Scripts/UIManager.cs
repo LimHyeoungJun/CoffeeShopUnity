@@ -92,6 +92,11 @@ public class UIManager : MonoBehaviour
     public GameObject GameClear;
     public Image ClearLogo;
 
+    public GameObject DrinkCount;
+    public TextMeshProUGUI number;
+    public TextMeshProUGUI count;
+
+
     private void Start()
     {
         obj.SetActive(false);
@@ -453,6 +458,26 @@ public class UIManager : MonoBehaviour
         }
 
 
+    }
+
+    public void ShowDrinkCount(int number, int count)
+    {
+        StartCoroutine(Counter(number, count));
+    }
+    IEnumerator Counter(int number, int count)
+    {
+        DrinkCount.SetActive(true);
+        this.number.text = number.ToString() +" "+"/";
+        this.count.text = count.ToString();
+
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.7f)
+        {
+            plusMoney.color = new Color(255, 0, 0, i);
+            this.number.color = new Color(255, 255, 255, i);
+            this.count.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        DrinkCount.SetActive(false);
     }
     
 

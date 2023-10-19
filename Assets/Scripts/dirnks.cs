@@ -41,6 +41,7 @@ public class dirnks : MonoBehaviour
             GameManager.instance.IsGiveDrink = true;
             GameManager.instance.IsCanCupSpawn = true;
             Destroy(gameObject);
+            
         }
 
     }

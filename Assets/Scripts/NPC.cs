@@ -7,7 +7,7 @@ public class Data
     public string str;
     public int price;
 
-    public Data(string str, int price)  // 생성자 추가
+    public Data(string str, int price)  
     {
         this.str = str;
         this.price = price;
@@ -109,6 +109,7 @@ public class NPC : LivingEntity
             /////////////////////////
 
             ++drinkcount;
+            UIManager.instance.ShowDrinkCount(number,drinkcount);
 
             //주문받음 음료가 제대로 나오면 할 행동
             //UIManager.instance.MoneyUpdate(GameManager.instance.PlayerMoney += cost);
