@@ -114,15 +114,15 @@ public class UIManager : MonoBehaviour
 
     public void button1On()
     {
-        mainbutton.SetActive(true);
-        firstscreenButton.SetActive(false);
+        //mainbutton.SetActive(true);
+        //firstscreenButton.SetActive(false);
         complitButton.SetActive(true);
         DeleteButton.SetActive(true);
     }
     public void button2On()
     {
-        mainbutton.SetActive(false);
-        firstscreenButton.SetActive(true);
+        //mainbutton.SetActive(false);
+        //firstscreenButton.SetActive(true);
         complitButton.SetActive(false);
         DeleteButton.SetActive(false);
     }

@@ -508,8 +508,6 @@ RectTransform:
   - {fileID: 161953561}
   - {fileID: 51584155}
   - {fileID: 1833120843}
-  - {fileID: 1854311224}
-  - {fileID: 2106548347}
   - {fileID: 988204609}
   - {fileID: 1577104777}
   - {fileID: 1021680434}
@@ -519,6 +517,8 @@ RectTransform:
   - {fileID: 1050976663}
   - {fileID: 1211915818}
   - {fileID: 526508344}
+  - {fileID: 1854311224}
+  - {fileID: 2106548347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2239,7 +2239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &266894290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6808,6 +6808,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6904,6 +6905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam1pos: {fileID: 460468307}
   cam2pos: {fileID: 1063127313}
+  minSwipeDistance: 50
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6920,6 +6922,18 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee66aec4e31272e49b16cfdb44703e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &967358736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8481,8 +8495,6 @@ MonoBehaviour:
     activeDay: 8
   - materialObject: {fileID: 1975860875}
     activeDay: 11
-  - materialObject: {fileID: 16486284}
-    activeDay: 14
   - materialObject: {fileID: 60734654}
     activeDay: 14
   - materialObject: {fileID: 1166166554}
@@ -8493,6 +8505,8 @@ MonoBehaviour:
     activeDay: 23
   - materialObject: {fileID: 1413386688}
     activeDay: 26
+  - materialObject: {fileID: 16486284}
+    activeDay: 31
   - materialObject: {fileID: 1247119799}
     activeDay: 36
   - materialObject: {fileID: 267091788}

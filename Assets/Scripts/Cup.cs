@@ -90,7 +90,7 @@ public class Cup : MonoBehaviour
             return;
            
         string objectTag = other.gameObject.tag.ToString();
-        if (!key.Contains(objectTag))
+        if (!key.Contains(objectTag) && cupCount < 4)
         {
             key.Add(objectTag);
             Debug.Log(objectTag);

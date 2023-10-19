@@ -50,6 +50,7 @@ public class ClockSpine : MonoBehaviour
             UIManager.instance.Die();
             Clock.transform.rotation = startRot;
             timer = 0;
+            GameManager.instance.oneone = true;
         }
         if(GameManager.instance.IsTimeToGo)
         {

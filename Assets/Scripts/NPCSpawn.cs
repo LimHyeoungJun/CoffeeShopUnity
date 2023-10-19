@@ -200,7 +200,7 @@ public class NPCSpawn : MonoBehaviour
             }
            
         }
-        else if (!GameManager.instance.IsTimeToGo && GameManager.instance.oneone)//npc5명 카운트
+        else if (!GameManager.instance.IsTimeToGo && GameManager.instance.oneone)
         {
             //Debug.Log("날짜 변경");
             foreach (var c in spawnList)
@@ -214,7 +214,7 @@ public class NPCSpawn : MonoBehaviour
                 UIManager.instance.AddMinusMoney(cost);
                 GameManager.instance.IsCompletDrink = true;
             }
-            
+            Debug.Log("217NPCSpawn");
             GameManager.instance.oneone = false;
             SpawnCount = 0;
             timer = 0f;
@@ -241,7 +241,7 @@ public class NPCSpawn : MonoBehaviour
             }
         }
 
-        // validKeys 리스트가 비어있지 않다면 그 중 하나를 랜덤하게 선택합니다.
+        // validKeys 리스트가 비어있지 않다면 그 중 하나를 랜덤하게 선택
         if (validKeys.Count > 0)
         {
             int randomIndex = UnityEngine.Random.Range(0, validKeys.Count);

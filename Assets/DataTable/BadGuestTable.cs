@@ -24,7 +24,7 @@ public class BadGuestTable : DataTable
 
     public BadGuestTable()//»ý¼ºÀÚ
     {
-        path = "Tables/BadGeustToBad";
+        path = "Tables/ReallyBadGuestTable";
         Load();
     }
 
