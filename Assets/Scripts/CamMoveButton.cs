@@ -34,7 +34,7 @@ public class CamMoveButton : MonoBehaviour
             UIManager.instance.ActiveMaterialButton(true);
             isShowMaterialButton = true;
         }
-        GameManager.instance.OnCupCollider = false;
+        //GameManager.instance.OnCupCollider = false;
         UIManager.instance.CupInSideWhat.SetActive(true);
     }
     public void OnClickOder()

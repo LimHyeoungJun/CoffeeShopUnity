@@ -60,11 +60,13 @@ public class CameraMove : MonoBehaviour
         {
             if (direction.x > 0)
             {
+                GameManager.instance.OnCupCollider = true;
                 CamMove1();
                 Debug.Log("left");
             }
             else
             {
+                GameManager.instance.OnCupCollider = false;
                 CamMove2();
                 Debug.Log("right");
             }

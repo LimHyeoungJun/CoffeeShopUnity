@@ -89,6 +89,9 @@ public class UIManager : MonoBehaviour
     public Image CupInMaterial3;
     public Image CupInMaterial4;
 
+    public GameObject GameClear;
+    public Image ClearLogo;
+
     private void Start()
     {
         obj.SetActive(false);
@@ -164,7 +167,14 @@ public class UIManager : MonoBehaviour
     public void Ending()
     {
        
-        StartCoroutine(FadeInOut());
+        if(DayContorller.instance.CurrentDay > 60)
+        {
+            StartCoroutine(GameClearLogo());
+        }
+        else
+        {
+            StartCoroutine(FadeInOut());
+        }
         
     }
 
@@ -199,6 +209,39 @@ public class UIManager : MonoBehaviour
         mainCam.OnClickOder();
         //canRestart = true;
     }
+
+    IEnumerator GameClearLogo()
+    {
+        // 페이드 인
+        //GameManager.instance.PlayerMoney -= 10000;
+        GameClear.SetActive(true);
+        //GameManager.instance.PlayerMoney -= GameManager.instance.CurrentDayMaterialCost;
+        for (float i = 0; i <= 1; i += Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
+        {
+            //fadeImage.color = new Color(0, 0, 0, i);
+            ClearLogo.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        //yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        DayContorller.instance.CurrentDay += 1;
+        SaveDataManager.instance.SaveData();
+        SetUpInfo();
+        // 페이드 아웃
+        for (float i = 1; i >= 0; i -= Time.deltaTime * 0.5f) // 0.5f는 페이드 속도입니다. 조정 가능
+        {
+            ClearLogo.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
+        GameClear.SetActive(false);
+        GameManager.instance.IsTimeToGo = true;
+
+        GameManager.instance.ThisDayMoney = 0;
+        GameManager.instance.CurrentDayMaterialCost = 0;
+        mainCam.OnClickOder();
+        //canRestart = true;
+    }
+
     public void ActiveMaterialButton(bool active)
     {
         UnderRightButton.SetActive(active);
@@ -411,6 +454,7 @@ public class UIManager : MonoBehaviour
 
 
     }
+    
 
 }
 
