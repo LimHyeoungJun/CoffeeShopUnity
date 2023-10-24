@@ -15,7 +15,7 @@ public class ClockSpine : MonoBehaviour
     private void Start()
     {
         startRot = Clock.transform.rotation;
-        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
+        //Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
     }
 
 
@@ -26,12 +26,14 @@ public class ClockSpine : MonoBehaviour
         {
             GameManager.instance.IsTimeToGo = false;
             Clock.transform.rotation = startRot;
-            UIManager.instance.Ending();
             UIManager.instance.SetUpInfo();
             
             GameManager.instance.SaveingMoney = GameManager.instance.PlayerMoney;
             timer = 0;
             GameManager.instance.oneone = true;
+            DayContorller.instance.CurrentDay += 1;
+            UIManager.instance.Ending();
+
         }
         else if(timer >= 90f && sum - 10000 <= -20000)
         {

@@ -23,7 +23,7 @@ public class TitleScene : MonoBehaviour
         bgm.volume = 0.5f;
         bgm.loop = true;
         bgm.Play();
-        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
+        //Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
         //BetaCode저장되있는 데이터가 있다면 버튼 표기 없다면 버튼 숨김
         if (PlayerPrefs.HasKey("Day") || PlayerPrefs.HasKey("Money"))
         {

@@ -172,7 +172,7 @@ public class UIManager : MonoBehaviour
     public void Ending()
     {
        
-        if(DayContorller.instance.CurrentDay > 60)
+        if(DayContorller.instance.CurrentDay == 61)
         {
             StartCoroutine(GameClearLogo());
         }
@@ -197,7 +197,7 @@ public class UIManager : MonoBehaviour
         }
         //yield return new WaitForSecondsRealtime(2f); // 1초 동안 화면을 유지합니다. 조정 가능
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        DayContorller.instance.CurrentDay += 1;
+        //DayContorller.instance.CurrentDay += 1;
         SaveDataManager.instance.SaveData();
         SetUpInfo();
         // 페이드 아웃
