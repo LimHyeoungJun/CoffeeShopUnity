@@ -162,14 +162,14 @@ public class NPCSpawn : MonoBehaviour
                     //        break;
                     //    }
                     //}
-                    int id = UnityEngine.Random.Range(10001, 10366);
+                    int id = UnityEngine.Random.Range(10001, 10365);
                     while (true)
                     {
                         if (guestInfo[id].day <= DayContorller.instance.CurrentDay && !saveLine.Equals(guestInfo[id].drinks))
                         {
                             break;
                         }
-                        id = UnityEngine.Random.Range(10001, 10366);
+                        id = UnityEngine.Random.Range(10001, 10365);
                     }
                     //var npc = Instantiate(NPCprefab, transform.position, Quaternion.identity);
                     //NPC obj = GetModelByName("1");

@@ -24,7 +24,7 @@ public class ImageSwitcher : MonoBehaviour
         bgm.volume = 0.5f;
         bgm.loop = true;
         bgm.Play();
-        Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
+        //Screen.SetResolution(720, 1280, FullScreenMode.FullScreenWindow);
 
     }
 

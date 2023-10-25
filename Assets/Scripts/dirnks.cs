@@ -36,24 +36,15 @@ public class dirnks : MonoBehaviour
             co.enabled= false;
         }
 
-        if (isMouseOver && Input.GetMouseButtonDown(0))
-        {
-            GameManager.instance.IsGiveDrink = true;
-            GameManager.instance.IsCanCupSpawn = true;
-            Destroy(gameObject);
-            
-        }
 
     }
 
-    private void OnTriggerEnter(Collider other)
+   
+    private void OnTriggerStay(Collider other)
     {
-        isMouseOver = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        isMouseOver = false;
+        GameManager.instance.IsGiveDrink = true;
+        GameManager.instance.IsCanCupSpawn = true;
+        Destroy(gameObject);
     }
 
 }

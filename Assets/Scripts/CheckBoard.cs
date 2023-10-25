@@ -5,32 +5,29 @@ using UnityEngine;
 public class CheckBoard : MonoBehaviour
 {
 
+    //private bool isMouseOver = false;
 
-    //private void OnTriggerStay(Collider other)
+    //private void Update()
     //{
-    //    if(Input.GetMouseButtonDown(0))
+    //    if (isMouseOver && Input.GetMouseButtonDown(0))
     //    {
     //        UIManager.instance.CheckMenuBoard.SetActive(true);
+    //        SoundManager.instance.PlayClickButtonSound();
     //    }
     //}
-    private bool isMouseOver = false;
 
-    private void Update()
-    {
-        if (isMouseOver && Input.GetMouseButtonDown(0))
-        {
-            UIManager.instance.CheckMenuBoard.SetActive(true);
-            SoundManager.instance.PlayClickButtonSound();
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    isMouseOver = true;
+    //}
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    isMouseOver = false;
+    //}
+    private void OnTriggerStay(Collider other)
     {
-        isMouseOver = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        isMouseOver = false;
+        UIManager.instance.CheckMenuBoard.SetActive(true);
+        SoundManager.instance.PlayClickButtonSound();
     }
 }
